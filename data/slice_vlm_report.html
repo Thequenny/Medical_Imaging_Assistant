@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>VLM slice summary report</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f5f7fa;
+      color: #1f2933;
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    h1, h2 {
+      margin: 0 0 12px;
+      color: #102a43;
+    }
+    h1 {
+      font-size: 28px;
+    }
+    h2 {
+      margin-top: 28px;
+      font-size: 20px;
+    }
+    .meta, .notice {
+      background: #ffffff;
+      border: 1px solid #d9e2ec;
+      border-radius: 6px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    .notice {
+      border-left: 4px solid #f0b429;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      background: #ffffff;
+      border: 1px solid #d9e2ec;
+      border-radius: 6px;
+      padding: 16px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .slice {
+      display: block;
+      color: #1f2933;
+      text-decoration: none;
+      background: #ffffff;
+      border: 1px solid #d9e2ec;
+      border-radius: 6px;
+      padding: 8px;
+    }
+    .slice img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      background: #000000;
+    }
+    .slice span {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      text-align: center;
+      word-break: break-word;
+    }
+    details {
+      background: #ffffff;
+      border: 1px solid #d9e2ec;
+      border-radius: 6px;
+      margin: 10px 0;
+      padding: 12px;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>VLM slice summary report</h1>
+    <section class="meta">
+      <div><strong>Series:</strong> la_010.nii.gz</div>
+      <div><strong>Slice type:</strong> axial slice</div>
+      <div><strong>Images used:</strong> 120</div>
+      <div><strong>Batch spacing:</strong> 8</div>
+      <div><strong>Generated:</strong> 2026-08-05 11:32:12</div>
+    </section>
+    <section class="notice">
+      Resume automatique produit par un modele vision-langage. Il doit etre
+      relu et valide par un expert avant toute interpretation clinique.
+    </section>
+    <h2>Resume global</h2>
+    <pre>**Synthèse globale de la série d&#x27;imagerie**
+
+1. **Vue d&#x27;ensemble de ce que montrent les coupes**  
+L&#x27;ensemble de la série correspond à une IRM cardiaque axiale et en court axe, réalisée selon le principe du « sang brillant » (probablement T1 pondérée avec Gadolinium). Les images couvrent successivement l&#x27;apex des ventricules jusqu&#x27;à la base cardiaque, puis s&#x27;étendent vers les racines aortiques/pulmonaires et la jonction thoraco-abdominale supérieure. L&#x27;acquisition constitue un échantillonnage représentatif d&#x27;une étude complète du cœur et des structures adjacentes.
+
+2. **Structures ou région anatomique probablement visibles**  
+Le myocarde ventriculaire (droit et gauche), les cavités cardiaques avec leurs orifices valvulaires, le septum interventriculaire, l&#x27;aorte ascendante et l&#x27;artère pulmonaire sont clairement identifiables. En progression basale, la partie haute du foie, le diaphragme et la colonne vertébrale postérieure apparaissent également. Les vaisseaux coronaires ne sont pas résolus de manière fiable sur cet échantillon global.
+
+3. **Tendance générale observée entre les coupes**  
+On constate une progression anatomique cohérente et continue : réduction progressive du calibre des cavités ventriculaires, transition régulière vers les gros vaisseaux thoraciques, puis apparition d&#x27;structures abdominales hautes. L&#x27;épaisseur pariétale et la distribution du signal contrastent globalement de manière physiologique attendue d&#x27;un niveau à l&#x27;autre.
+
+4. **Qualité globale des images et artefacts évidents**  
+La qualité est acceptable pour une évaluation morphologique de base, avec un bon contraste sang-tissus mous. Toutefois, la série est marquée par des artefacts de mouvement respiratoire et cardiaque résiduels (flou pariétal, hétérogénéité locale du signal, contours irréguliers). Le bruit de fond varie selon les plans. Ces effets cinétiques sont typiques des séquences longues non strictement synchronisées.
+
+5. **Points d&#x27;attention visibles à vérifier, sans diagnostic certain**  
+- Zones d&#x27;hétérogénéité ou d&#x27;hypersignal au niveau du myocarde intermédiaire et postéro-latéral : requièrent une corrélation sur la série complète pour distinguer rehaussement focal, œdème possible, variation anatomique ou simple artefact de champ.
+- Continuité et régularité du septum et de la paroi ventriculaire gauche aux niveaux médians (zones sensibles aux artefacts).
+- Signal hépatique en base de série et contours vasculaires aortiques : à reviewer impérativement sur les coupes brutes non échantillonnées.
+*(Aucun diagnostic n&#x27;est formulé ; ces observations relèvent d&#x27;une vérification multicoupe standard et d&#x27;un contexte clinique.)*
+
+6. **Limites de ce résumé**  
+Cette synthèse repose sur un échantillonnage discret et une analyse statique qui excluent toute évaluation fonctionnelle (cinétique pariétale, fraction d&#x27;éjection, viabilité tissulaire). Les artefacts de mouvement et les écarts entre tranches créent des zones d&#x27;incertitude qualitatives inévitables. Une interprétation fiable exige la lecture intégrale des coupes continues le croisement avec les autres séquences IRM (T2, LGE, perfusion) et l&#x27;intégration du contexte patient.</pre>
+    <h2>Prompt utilise</h2>
+    <pre>Tu recois une serie ordonnee de coupes d&#x27;imagerie medicale.
+Ton objectif n&#x27;est pas d&#x27;analyser chaque coupe individuellement, mais de produire
+un resume global de l&#x27;ensemble de la serie.
+
+Redige une synthese courte en francais avec:
+
+1. Vue d&#x27;ensemble de ce que montrent les coupes
+2. Structures ou region anatomique probablement visibles, seulement si identifiable
+3. Tendance generale observee entre les coupes
+4. Qualite globale des images et artefacts evidents
+5. Points d&#x27;attention visibles a verifier, sans diagnostic certain
+6. Limites de ce resume
+
+Ne decris pas les coupes une par une. Ne liste des noms de fichiers que si une
+coupe semble vraiment importante a revoir. Signale clairement les incertitudes.</pre>
+    <h2>Resumes par lot</h2>
+<details><summary>Lot 1 - 12 coupes</summary><p><strong>Coupes utilisees:</strong> slice_000.png, slice_008.png, slice_016.png, slice_024.png, slice_032.png, slice_040.png, slice_048.png, slice_056.png, slice_064.png, slice_072.png, slice_080.png, slice_088.png</p><pre>**Synthèse du lot 1/10 (Coupes courtes cardiaques)**
+
+1. **Vue d&#x27;ensemble** : Cette série est composée de coupes courtes du thorax, présentant le cœur en coupe horizontale transversale. On y observe clairement les ventricules et oreillettes.
+2. **Structures visibles** : Le myocarde cardiaque (notamment le ventricule gauche épais) est bien délimité par un contraste satisfaisant. Les cavités droites et gauches sont distinguables, de même que les vaisseaux aortique et pulmonaire à certains niveaux.
+3. **Tendance générale** : Les coupes progressent anatomiquement de la base vers l&#x27;apex du cœur. La taille des cavités diminue progressivement d&#x27;abord en augmentant puis diminuant légèrement au fur et à mesure que l&#x27;on s&#x27;approche de l&#x27;extrémité inférieure (apice).
+4. **Qualité globale** : La qualité est acceptable pour une évaluation morphologique rapide, bien que des artefacts de mouvement soient observables. Les contours du myocarde sont généralement nets, permettant une bonne appréciation de la symétrie et de l&#x27;épaisseur relative des parois sur les niveaux visibles.
+5. **Points d&#x27;attention** : La zone d&#x27;hyper signal intense (très lumineuse) présente sur les premières images pourrait correspondre à un flux sanguin ou une structure vasculaire. À vérifier si cette hyper signalité persiste sur des coupes plus basses. Épaisseur du myocarde ventriculaire gauche sur la série complète.
+6. **Limites** : Analyse purement morphologique basée sur des coupes espacées. Aucune évaluation de la fonction cardiaque (fraction d&#x27;éjection), de la cinétique pariétale ou de la viabilité myocardique ne peut être réalisée sans les données dynamiques complètes et les séquences supplémentaires (stress, rehaussement précoce/tardif).</pre></details>
+<details><summary>Lot 2 - 12 coupes</summary><p><strong>Coupes utilisees:</strong> slice_001.png, slice_009.png, slice_017.png, slice_025.png, slice_033.png, slice_041.png, slice_049.png, slice_057.png, slice_065.png, slice_073.png, slice_081.png, slice_089.png</p><pre>**Synthèse du lot 2/10 (IRM Cardiaque Axiale)**
+
+Cette série d&#x27;images correspond à des coupes axiales (transversales) d&#x27;une IRM cardiaque avec un contraste de type &quot;sang brillant&quot;. L&#x27;anatomie visible inclut le cœur au centre, la colonne vertébrale en arrière et une portion du foie sur le côté gauche de l&#x27;image. La tendance générale montre une progression cranio-caudale : on observe d&#x27;abord les ventricules (probablement à la base) pour remonter vers les oreillettes et les gros vaisseaux sur les dernières coupes.
+
+La qualité des images est correcte avec un bon contraste entre le myocarde et le sang, bien que la graisse sous-cutanée semble également hyperintense (brillante). Les points d&#x27;attention concernent l&#x27;épaisseur et la régularité de la paroi du ventricule gauche sur les coupes médianes, ainsi que la zone adjacente au foie.
+
+**Limites :** Il s&#x27;agit ici d&#x27;une vue partielle (échantillon ordonné), ce qui empêche une évaluation fonctionnelle complète ou un diagnostic anatomique exhaustif de tout le thorax.</pre></details>
+<details><summary>Lot 3 - 12 coupes</summary><p><strong>Coupes utilisees:</strong> slice_002.png, slice_010.png, slice_018.png, slice_026.png, slice_034.png, slice_042.png, slice_050.png, slice_058.png, slice_066.png, slice_074.png, slice_082.png, slice_090.png</p><pre>**Resume du lot 3/10 (echantillon espacé d&#x27;une serie IRM):**
+
+1. **Vue d&#x27;ensemble:** Ce lot couvre une tranche importante du thorax superieur, probablement axiale ou oblique, montrant le passage des structures abdominales hautes vers les cavites inferieures puis bases cardiaques.
+2. **Structures visibles:** Les ventricules (gauche et droit) sont clairement presents sur la moitie superior de la serie. La colonne vertebrale posterieure est nette, ainsi que le foie en partie basse. Les coupes superieures montrent les oreillettes et de gros vaisseaux thoraciques.
+3. **Tendances generales:** Progression cranio-caudale ou caudo-craniale couvrant la longueur ventriculaire jusqu&#x27;a la base du coeur, revelant une morphologie cardiaque standard. La paroi myocardique semble relativement homogene sur les coupes centrales.
+4. **Qualite et artefacts:** Images bruitees en peripherie (souvent dues aux champs magnetiques), mais avec un contraste global acceptable pour l&#x27;interpretation generale. Quelques legers artefacts de mouvement sont possibles sans la serie temporelle complete.
+5. **Points d&#x27;attention a verifier:** L&#x27;epaisseur et l&#x27;integrite des parois ventriculaires sur les coupes intermediaires (slice_042 a slice_074). La topologie vasculaire visible en fin de lot necessite un controle complet sur toutes les coupes non echantillonnees.
+6. **Limites:** Le faible nombre d&#x27;images par tranche empêche une évaluation précise du temps systole/diastole et des anomalies focales localisées entre deux coupes.</pre></details>
+<details><summary>Lot 4 - 12 coupes</summary><p><strong>Coupes utilisees:</strong> slice_003.png, slice_011.png, slice_019.png, slice_027.png, slice_035.png, slice_043.png, slice_051.png, slice_059.png, slice_067.png, slice_075.png, slice_083.png, slice_091.png</p><pre>Ce lot constitue un échantillon ordonné de coupes IRM cardiaques en court axe (short axis), couvrant la base vers l&#x27;apex du cœur. Les structures visibles incluent les ventricules, avec une distinction nette entre le myocarde et le sang, ainsi que des segments des grands vaisseaux aortiques. La qualité globale est acceptable avec un bon contraste de tissu, bien qu&#x27;une certaine granuloméité soit visible sur les muscles pectoraux et l&#x27;adiposité pariétale. On observe une progression cohérente de la taille du ventricule gauche à mesure que l&#x27;on s&#x27;éloigne de la base des valvules vers l&#x27;apex. Des zones d&#x27;hypersignal dans le myocarde méritent attention pour exclure un œdème ou une accumulation de gadolinium, mais aucune certitude ne peut être avancée sans séquence comparatives (T2 ou LGE). La couverture n&#x27;est que partielle et il convient de vérifier les niveaux extrêmes non inclus.</pre></details>
+<details><summary>Lot 5 - 12 coupes</summary><p><strong>Coupes utilisees:</strong> slice_004.png, slice_012.png, slice_020.png, slice_028.png, slice_036.png, slice_044.png, slice_052.png, slice_060.png, slice_068.png, slice_076.png, slice_084.png, slice_092.png</p><pre>**Synthèse du lot d&#x27;images : Série IRM cardiaque courte-axe (Lot 5/10)**
+
+1. **Vue d&#x27;ensemble :** Cette série correspond à des coupes transversales axiales successives de l&#x27;IRM cardiaque, se déplaçant progressivement vers le haut du thorax. On observe principalement la progression anatomique à travers les ventricules cardiaques puis vers la base du cœur et les gros vaisseaux aortiques.
+
+2. **Structures identifiables :** Les ventricules gauche (épais) et droit sont clairement visualisés dans les premières coupes avec le sang au signal hyperintense. La progression montre ensuite la partie proximale de l&#x27;aorte et de l&#x27;artère pulmonaire, ainsi que la colonne dorso-lombaire en arrière-plan.
+
+3. **Tendance générale :** Les images montrent une coupe anatomique ascendante régulière. L&#x27;intensité du signal sanguin est uniforme, suggérant une bonne prise de vue avec ou sans produit de contraste. La transition entre le muscle cardiaque et les grandes cavités est visible sur tout le trajet de l&#x27;échantillon.
+
+4. **Qualité des images :** Qualité d&#x27;imagerie correcte. Le bruit de fond faible permet de bien distinguer les contours du cœur par rapport aux poumons (hypo-intenses). On note quelques artefacts de mouvement subtils typiques de l&#x27;IRM cardiaque, mais l&#x27;anatomie reste bien définie.
+
+5. **Points d&#x27;attention :**
+   * Vérifier la continuité septale entre les coupes 052 et 068 pour exclure tout défaut mural.
+   * Confirmer l&#x27;épaisseur du myocarde dans les zones où le signal varie (notamment slice_052).
+   * Le rehaussement (le cas échéant) de la paroi des vaisseaux en sortie doit être contrôlé (slice_084+).
+
+6. **Limites :** L&#x27;échantillonnage espacé d&#x27;environ 8 indices permet de couvrir les niveaux mais passe à côté de l&#x27;analyse fine de chaque millimètre intermédiaire entre les coupes sélectionnées. Un diagnostic précis nécessiterait la visionnage continu des 10 images non incluses dans ce lot échantillonné.</pre></details>
+<details><summary>Lot 6 - 12 coupes</summary><p><strong>Coupes utilisees:</strong> slice_005.png, slice_013.png, slice_021.png, slice_029.png, slice_037.png, slice_045.png, slice_053.png, slice_061.png, slice_069.png, slice_077.png, slice_085.png, slice_093.png</p><pre>La série montre des coupes IRM axiales du cœur humain, se concentrant sur l&#x27;analyse morphologique de l&#x27;aorte ascendante et des ventricules. Les coupes sont progressives verticalement à travers le thorax. En haut, on distingue nettement les aigus de l&#x27;aorte puis le reflux. A mesure que l&#x27;on avance dans la série, on voit apparaitre les orifices auriculo-ventriculaires (tricuspidien et mitral), puis le ventricule droit s&#x27;étendant latéralement. La transition entre les cavités supérieure et inférieure du myocarde est visible sous forme de lignes fines.
+
+L&#x27;ensemble des coupes présente une qualité d&#x27;imagerie acceptable pour l&#x27;évaluation de la structure cardiaque, avec un bon contraste des contours des artères coronaires ou des sinus coronaire. Il y a un léger bruit de fond mais globalement net sur ces images. Un point à surveiller attention : la présence de tissus adipeux épais (hypersignal) autour du cœur et une bonne opacification vasculaire.
+
+Il est à noter l’absence de pathologie majeure directement identifiable sur toutes les coupes dans ce résumé. Cependant, des coupes supplémentaires seraient nécessaires pour évaluer plus précisément l&#x27;artère coronaire droite (sur slice_077) et son trajet. La série complète serait donc nécessaire pour une interprétation définitive de la vascularisation ou du myocarde sans risque d&#x27;oublier des zones critiques en dehors de cette portion sélectionnée.</pre></details>
+<details><summary>Lot 7 - 12 coupes</summary><p><strong>Coupes utilisees:</strong> slice_006.png, slice_014.png, slice_022.png, slice_030.png, slice_038.png, slice_046.png, slice_054.png, slice_062.png, slice_070.png, slice_078.png, slice_086.png, slice_094.png</p><pre>Ce lot d&#x27;images correspond à une séquence d&#x27;imagerie par résonance magnétique (IRM) cardiaque, probablement en coupes sagittales longues axes (vue de profil du cœur). La progression des coupes permet d&#x27;observer la transition entre les ventricules et les oreillettes, avec la colonne vertébrale thoracique visible en arrière-plan.
+
+La qualité globale est acceptée mais marquée par un bruit de fond important (granularité) et un contraste fort au niveau du pool sanguin. On note une hétérogénéité suspecte du signal au niveau de la paroi ventriculaire latérale visible aux coupes intermédiaires (notamment les slices_038.png à slice_054.png), qui pourrait refléter un épaississement ou un rehaussement pathologique.
+
+**Points d&#x27;attention :** L&#x27;analyse est limitée par l&#x27;écart entre les tranches fournies (échantillonnage espacé), rendant difficile le contexte 3D exact ou l&#x27;étude de la cinétique ventriculaire. La localisation réelle des anomalies potentielles nécessite la consultation du jeu complet des coupes adjacentes.</pre></details>
+<details><summary>Lot 8 - 12 coupes</summary><p><strong>Coupes utilisees:</strong> slice_007.png, slice_015.png, slice_023.png, slice_031.png, slice_039.png, slice_047.png, slice_055.png, slice_063.png, slice_071.png, slice_079.png, slice_087.png, slice_095.png</p><pre>Ce lot présente une série de coupes cardiaques transverses (courtes axes) en IRM avec injection de produit de contraste Gadolinium, allant du sommet vers la base du cœur. La qualité globale de l&#x27;examen est variable : bien que les cavités ventriculaires et le myocarde soient visibles, certaines zones souffrent d&#x27;un manque de netteté, probablement lié aux mouvements respiratoires et cardiaques durant l&#x27;acquisition.
+
+Sur ce lot 8/10, la structure principale du cœur est identifiable avec une certaine continuité morphologique entre les coupes. L&#x27;épaisseur de la paroi myocardique semble homogène sur plusieurs sections, bien qu&#x27;une zone légèrement plus épaisse ou hétérogène soit observable vers l&#x27;extrémité supérieure sur quelques images intermédiaires (coupes 6 à 8) nécessitant un examen plus précis pour confirmer s&#x27;il s&#x27;agit d&#x27;un épaississement pathologique ou d&#x27;une variation anatomique.
+
+Les coupes inférieures (10-12) montrent une transition vers la zone de l&#x27;aorte et des gros vaisseaux, où le contraste du sang est marqué ; aucune anomalie macroscopique évidente de ces structures n&#x27;apparaît ici, mais les limites entre les tissus sont parfois mal définies. 
+
+**Points d&#x27;attention à vérifier :** 
+* L&#x27;évaluation de l&#x27;épaisseur et de la régularité de la paroi du ventricule gauche sur les coupes intermédiaires, où le contraste peut trompeusement masquer des épaississements focaux ou une dysmorphie.
+* La présence d&#x27;une zone sombre sur la partie postérieure du myocarde sur certaines images, potentiellement liée à un artefact de champ inhomogène (fréquent en IRM cardiaque) plutôt qu&#x27;à une véritable lésion. 
+
+Les coupes sont numérotées 007-095 dans le lot complet ; aucune image n&#x27;est particulièrement isolée au point de demander une vérification immédiate, mais les zones d&#x27;incertitude décrites devraient être revues sur l&#x27;intégralité de la série pour confirmer ces observations.</pre></details>
+<details><summary>Lot 9 - 12 coupes</summary><p><strong>Coupes utilisees:</strong> slice_096.png, slice_104.png, slice_112.png, slice_097.png, slice_105.png, slice_113.png, slice_098.png, slice_106.png, slice_114.png, slice_099.png, slice_107.png, slice_115.png</p><pre>Ce lot de 12 coupes d&#x27;IRM thoraco-abdominale basse offre une vue transversale centrée sur le foie (gauche de l&#x27;image) et le cœur (centre). Les images sont redondantes, couvrant une même zone anatomique avec un échantillonnage très fin.
+
+**Points clés :**
+*   **Qualité :** La résolution est limitée par des artefacts de mouvement importants (flou du diaphragme et des contours hépatiques), typiques des séquences respiratoires longues ou non synchronisées.
+*   **Anatomie :** On distingue le foie avec un parenchyme apparemment hétérogène, le cœur avec ses ventricules, et l&#x27;aorte abdominale/thoracique postérieure.
+*   **Attention :** L&#x27;hétérogénéité de signal dans le foie (zones hyperintenses ponctuelles) est visible mais difficile à caractériser en raison du flou. Il faut vérifier si ces zones correspondent à des vaisseaux, des kystes ou des lésions en corrélant avec les autres plans.
+*   **Limites :** L&#x27;absence de continuité crânio-caudale claire dans ce lot réduit la capacité à suivre les structures sur plusieurs niveaux ; une relecture de l&#x27;intégralité de la série est nécessaire pour tout diagnostic.</pre></details>
+<details><summary>Lot 10 - 12 coupes</summary><p><strong>Coupes utilisees:</strong> slice_100.png, slice_108.png, slice_116.png, slice_101.png, slice_109.png, slice_117.png, slice_102.png, slice_110.png, slice_118.png, slice_103.png, slice_111.png, slice_119.png</p><pre>Il semble qu&#x27;**aucune image ne soit réellement fournie** dans votre message (la liste des fichiers `slice_100.png` à `slice_119.png` est présente, mais les fichier images eux-mêmes ne sont pas visibles).
+
+Pour respecter vos instructions (synthèse de l&#x27;anatomie, tendances et qualité), **je ne peux malheureusement pas analyser la série** sans y avoir accès visuellement.
+
+Dès que vous jointerez les fichiers ou une image représentative du lot 10/10, je pourrai immédiatement rédiger le résumé global demandé en incluant :
+*   La vue d&#x27;ensemble et l&#x27;anatomie identifiée (mouvements, graisse, structures).
+*   Les tendances générales dans la série.
+*   Une analyse de la qualité et des artéfacts.
+*   Les points d&#x27;attention à vérifier.
+
+Veuillez donc réessayer en **attacheant les images** ou en précisant si vous souhaitez une simulation textuelle basée sur un jeu de données standard (ex: IRM mammaire type INbreast/DDBMI).</pre></details>
+    <h2>Coupes utilisees</h2>
+    <div class="gallery">
+      <a class="slice" href="slices/slice_000.png"><img src="slices/slice_000.png" alt="slice_000"><span>slice_000</span></a>
+<a class="slice" href="slices/slice_001.png"><img src="slices/slice_001.png" alt="slice_001"><span>slice_001</span></a>
+<a class="slice" href="slices/slice_002.png"><img src="slices/slice_002.png" alt="slice_002"><span>slice_002</span></a>
+<a class="slice" href="slices/slice_003.png"><img src="slices/slice_003.png" alt="slice_003"><span>slice_003</span></a>
+<a class="slice" href="slices/slice_004.png"><img src="slices/slice_004.png" alt="slice_004"><span>slice_004</span></a>
+<a class="slice" href="slices/slice_005.png"><img src="slices/slice_005.png" alt="slice_005"><span>slice_005</span></a>
+<a class="slice" href="slices/slice_006.png"><img src="slices/slice_006.png" alt="slice_006"><span>slice_006</span></a>
+<a class="slice" href="slices/slice_007.png"><img src="slices/slice_007.png" alt="slice_007"><span>slice_007</span></a>
+<a class="slice" href="slices/slice_008.png"><img src="slices/slice_008.png" alt="slice_008"><span>slice_008</span></a>
+<a class="slice" href="slices/slice_009.png"><img src="slices/slice_009.png" alt="slice_009"><span>slice_009</span></a>
+<a class="slice" href="slices/slice_010.png"><img src="slices/slice_010.png" alt="slice_010"><span>slice_010</span></a>
+<a class="slice" href="slices/slice_011.png"><img src="slices/slice_011.png" alt="slice_011"><span>slice_011</span></a>
+<a class="slice" href="slices/slice_012.png"><img src="slices/slice_012.png" alt="slice_012"><span>slice_012</span></a>
+<a class="slice" href="slices/slice_013.png"><img src="slices/slice_013.png" alt="slice_013"><span>slice_013</span></a>
+<a class="slice" href="slices/slice_014.png"><img src="slices/slice_014.png" alt="slice_014"><span>slice_014</span></a>
+<a class="slice" href="slices/slice_015.png"><img src="slices/slice_015.png" alt="slice_015"><span>slice_015</span></a>
+<a class="slice" href="slices/slice_016.png"><img src="slices/slice_016.png" alt="slice_016"><span>slice_016</span></a>
+<a class="slice" href="slices/slice_017.png"><img src="slices/slice_017.png" alt="slice_017"><span>slice_017</span></a>
+<a class="slice" href="slices/slice_018.png"><img src="slices/slice_018.png" alt="slice_018"><span>slice_018</span></a>
+<a class="slice" href="slices/slice_019.png"><img src="slices/slice_019.png" alt="slice_019"><span>slice_019</span></a>
+<a class="slice" href="slices/slice_020.png"><img src="slices/slice_020.png" alt="slice_020"><span>slice_020</span></a>
+<a class="slice" href="slices/slice_021.png"><img src="slices/slice_021.png" alt="slice_021"><span>slice_021</span></a>
+<a class="slice" href="slices/slice_022.png"><img src="slices/slice_022.png" alt="slice_022"><span>slice_022</span></a>
+<a class="slice" href="slices/slice_023.png"><img src="slices/slice_023.png" alt="slice_023"><span>slice_023</span></a>
+<a class="slice" href="slices/slice_024.png"><img src="slices/slice_024.png" alt="slice_024"><span>slice_024</span></a>
+<a class="slice" href="slices/slice_025.png"><img src="slices/slice_025.png" alt="slice_025"><span>slice_025</span></a>
+<a class="slice" href="slices/slice_026.png"><img src="slices/slice_026.png" alt="slice_026"><span>slice_026</span></a>
+<a class="slice" href="slices/slice_027.png"><img src="slices/slice_027.png" alt="slice_027"><span>slice_027</span></a>
+<a class="slice" href="slices/slice_028.png"><img src="slices/slice_028.png" alt="slice_028"><span>slice_028</span></a>
+<a class="slice" href="slices/slice_029.png"><img src="slices/slice_029.png" alt="slice_029"><span>slice_029</span></a>
+<a class="slice" href="slices/slice_030.png"><img src="slices/slice_030.png" alt="slice_030"><span>slice_030</span></a>
+<a class="slice" href="slices/slice_031.png"><img src="slices/slice_031.png" alt="slice_031"><span>slice_031</span></a>
+<a class="slice" href="slices/slice_032.png"><img src="slices/slice_032.png" alt="slice_032"><span>slice_032</span></a>
+<a class="slice" href="slices/slice_033.png"><img src="slices/slice_033.png" alt="slice_033"><span>slice_033</span></a>
+<a class="slice" href="slices/slice_034.png"><img src="slices/slice_034.png" alt="slice_034"><span>slice_034</span></a>
+<a class="slice" href="slices/slice_035.png"><img src="slices/slice_035.png" alt="slice_035"><span>slice_035</span></a>
+<a class="slice" href="slices/slice_036.png"><img src="slices/slice_036.png" alt="slice_036"><span>slice_036</span></a>
+<a class="slice" href="slices/slice_037.png"><img src="slices/slice_037.png" alt="slice_037"><span>slice_037</span></a>
+<a class="slice" href="slices/slice_038.png"><img src="slices/slice_038.png" alt="slice_038"><span>slice_038</span></a>
+<a class="slice" href="slices/slice_039.png"><img src="slices/slice_039.png" alt="slice_039"><span>slice_039</span></a>
+<a class="slice" href="slices/slice_040.png"><img src="slices/slice_040.png" alt="slice_040"><span>slice_040</span></a>
+<a class="slice" href="slices/slice_041.png"><img src="slices/slice_041.png" alt="slice_041"><span>slice_041</span></a>
+<a class="slice" href="slices/slice_042.png"><img src="slices/slice_042.png" alt="slice_042"><span>slice_042</span></a>
+<a class="slice" href="slices/slice_043.png"><img src="slices/slice_043.png" alt="slice_043"><span>slice_043</span></a>
+<a class="slice" href="slices/slice_044.png"><img src="slices/slice_044.png" alt="slice_044"><span>slice_044</span></a>
+<a class="slice" href="slices/slice_045.png"><img src="slices/slice_045.png" alt="slice_045"><span>slice_045</span></a>
+<a class="slice" href="slices/slice_046.png"><img src="slices/slice_046.png" alt="slice_046"><span>slice_046</span></a>
+<a class="slice" href="slices/slice_047.png"><img src="slices/slice_047.png" alt="slice_047"><span>slice_047</span></a>
+<a class="slice" href="slices/slice_048.png"><img src="slices/slice_048.png" alt="slice_048"><span>slice_048</span></a>
+<a class="slice" href="slices/slice_049.png"><img src="slices/slice_049.png" alt="slice_049"><span>slice_049</span></a>
+<a class="slice" href="slices/slice_050.png"><img src="slices/slice_050.png" alt="slice_050"><span>slice_050</span></a>
+<a class="slice" href="slices/slice_051.png"><img src="slices/slice_051.png" alt="slice_051"><span>slice_051</span></a>
+<a class="slice" href="slices/slice_052.png"><img src="slices/slice_052.png" alt="slice_052"><span>slice_052</span></a>
+<a class="slice" href="slices/slice_053.png"><img src="slices/slice_053.png" alt="slice_053"><span>slice_053</span></a>
+<a class="slice" href="slices/slice_054.png"><img src="slices/slice_054.png" alt="slice_054"><span>slice_054</span></a>
+<a class="slice" href="slices/slice_055.png"><img src="slices/slice_055.png" alt="slice_055"><span>slice_055</span></a>
+<a class="slice" href="slices/slice_056.png"><img src="slices/slice_056.png" alt="slice_056"><span>slice_056</span></a>
+<a class="slice" href="slices/slice_057.png"><img src="slices/slice_057.png" alt="slice_057"><span>slice_057</span></a>
+<a class="slice" href="slices/slice_058.png"><img src="slices/slice_058.png" alt="slice_058"><span>slice_058</span></a>
+<a class="slice" href="slices/slice_059.png"><img src="slices/slice_059.png" alt="slice_059"><span>slice_059</span></a>
+<a class="slice" href="slices/slice_060.png"><img src="slices/slice_060.png" alt="slice_060"><span>slice_060</span></a>
+<a class="slice" href="slices/slice_061.png"><img src="slices/slice_061.png" alt="slice_061"><span>slice_061</span></a>
+<a class="slice" href="slices/slice_062.png"><img src="slices/slice_062.png" alt="slice_062"><span>slice_062</span></a>
+<a class="slice" href="slices/slice_063.png"><img src="slices/slice_063.png" alt="slice_063"><span>slice_063</span></a>
+<a class="slice" href="slices/slice_064.png"><img src="slices/slice_064.png" alt="slice_064"><span>slice_064</span></a>
+<a class="slice" href="slices/slice_065.png"><img src="slices/slice_065.png" alt="slice_065"><span>slice_065</span></a>
+<a class="slice" href="slices/slice_066.png"><img src="slices/slice_066.png" alt="slice_066"><span>slice_066</span></a>
+<a class="slice" href="slices/slice_067.png"><img src="slices/slice_067.png" alt="slice_067"><span>slice_067</span></a>
+<a class="slice" href="slices/slice_068.png"><img src="slices/slice_068.png" alt="slice_068"><span>slice_068</span></a>
+<a class="slice" href="slices/slice_069.png"><img src="slices/slice_069.png" alt="slice_069"><span>slice_069</span></a>
+<a class="slice" href="slices/slice_070.png"><img src="slices/slice_070.png" alt="slice_070"><span>slice_070</span></a>
+<a class="slice" href="slices/slice_071.png"><img src="slices/slice_071.png" alt="slice_071"><span>slice_071</span></a>
+<a class="slice" href="slices/slice_072.png"><img src="slices/slice_072.png" alt="slice_072"><span>slice_072</span></a>
+<a class="slice" href="slices/slice_073.png"><img src="slices/slice_073.png" alt="slice_073"><span>slice_073</span></a>
+<a class="slice" href="slices/slice_074.png"><img src="slices/slice_074.png" alt="slice_074"><span>slice_074</span></a>
+<a class="slice" href="slices/slice_075.png"><img src="slices/slice_075.png" alt="slice_075"><span>slice_075</span></a>
+<a class="slice" href="slices/slice_076.png"><img src="slices/slice_076.png" alt="slice_076"><span>slice_076</span></a>
+<a class="slice" href="slices/slice_077.png"><img src="slices/slice_077.png" alt="slice_077"><span>slice_077</span></a>
+<a class="slice" href="slices/slice_078.png"><img src="slices/slice_078.png" alt="slice_078"><span>slice_078</span></a>
+<a class="slice" href="slices/slice_079.png"><img src="slices/slice_079.png" alt="slice_079"><span>slice_079</span></a>
+<a class="slice" href="slices/slice_080.png"><img src="slices/slice_080.png" alt="slice_080"><span>slice_080</span></a>
+<a class="slice" href="slices/slice_081.png"><img src="slices/slice_081.png" alt="slice_081"><span>slice_081</span></a>
+<a class="slice" href="slices/slice_082.png"><img src="slices/slice_082.png" alt="slice_082"><span>slice_082</span></a>
+<a class="slice" href="slices/slice_083.png"><img src="slices/slice_083.png" alt="slice_083"><span>slice_083</span></a>
+<a class="slice" href="slices/slice_084.png"><img src="slices/slice_084.png" alt="slice_084"><span>slice_084</span></a>
+<a class="slice" href="slices/slice_085.png"><img src="slices/slice_085.png" alt="slice_085"><span>slice_085</span></a>
+<a class="slice" href="slices/slice_086.png"><img src="slices/slice_086.png" alt="slice_086"><span>slice_086</span></a>
+<a class="slice" href="slices/slice_087.png"><img src="slices/slice_087.png" alt="slice_087"><span>slice_087</span></a>
+<a class="slice" href="slices/slice_088.png"><img src="slices/slice_088.png" alt="slice_088"><span>slice_088</span></a>
+<a class="slice" href="slices/slice_089.png"><img src="slices/slice_089.png" alt="slice_089"><span>slice_089</span></a>
+<a class="slice" href="slices/slice_090.png"><img src="slices/slice_090.png" alt="slice_090"><span>slice_090</span></a>
+<a class="slice" href="slices/slice_091.png"><img src="slices/slice_091.png" alt="slice_091"><span>slice_091</span></a>
+<a class="slice" href="slices/slice_092.png"><img src="slices/slice_092.png" alt="slice_092"><span>slice_092</span></a>
+<a class="slice" href="slices/slice_093.png"><img src="slices/slice_093.png" alt="slice_093"><span>slice_093</span></a>
+<a class="slice" href="slices/slice_094.png"><img src="slices/slice_094.png" alt="slice_094"><span>slice_094</span></a>
+<a class="slice" href="slices/slice_095.png"><img src="slices/slice_095.png" alt="slice_095"><span>slice_095</span></a>
+<a class="slice" href="slices/slice_096.png"><img src="slices/slice_096.png" alt="slice_096"><span>slice_096</span></a>
+<a class="slice" href="slices/slice_097.png"><img src="slices/slice_097.png" alt="slice_097"><span>slice_097</span></a>
+<a class="slice" href="slices/slice_098.png"><img src="slices/slice_098.png" alt="slice_098"><span>slice_098</span></a>
+<a class="slice" href="slices/slice_099.png"><img src="slices/slice_099.png" alt="slice_099"><span>slice_099</span></a>
+<a class="slice" href="slices/slice_100.png"><img src="slices/slice_100.png" alt="slice_100"><span>slice_100</span></a>
+<a class="slice" href="slices/slice_101.png"><img src="slices/slice_101.png" alt="slice_101"><span>slice_101</span></a>
+<a class="slice" href="slices/slice_102.png"><img src="slices/slice_102.png" alt="slice_102"><span>slice_102</span></a>
+<a class="slice" href="slices/slice_103.png"><img src="slices/slice_103.png" alt="slice_103"><span>slice_103</span></a>
+<a class="slice" href="slices/slice_104.png"><img src="slices/slice_104.png" alt="slice_104"><span>slice_104</span></a>
+<a class="slice" href="slices/slice_105.png"><img src="slices/slice_105.png" alt="slice_105"><span>slice_105</span></a>
+<a class="slice" href="slices/slice_106.png"><img src="slices/slice_106.png" alt="slice_106"><span>slice_106</span></a>
+<a class="slice" href="slices/slice_107.png"><img src="slices/slice_107.png" alt="slice_107"><span>slice_107</span></a>
+<a class="slice" href="slices/slice_108.png"><img src="slices/slice_108.png" alt="slice_108"><span>slice_108</span></a>
+<a class="slice" href="slices/slice_109.png"><img src="slices/slice_109.png" alt="slice_109"><span>slice_109</span></a>
+<a class="slice" href="slices/slice_110.png"><img src="slices/slice_110.png" alt="slice_110"><span>slice_110</span></a>
+<a class="slice" href="slices/slice_111.png"><img src="slices/slice_111.png" alt="slice_111"><span>slice_111</span></a>
+<a class="slice" href="slices/slice_112.png"><img src="slices/slice_112.png" alt="slice_112"><span>slice_112</span></a>
+<a class="slice" href="slices/slice_113.png"><img src="slices/slice_113.png" alt="slice_113"><span>slice_113</span></a>
+<a class="slice" href="slices/slice_114.png"><img src="slices/slice_114.png" alt="slice_114"><span>slice_114</span></a>
+<a class="slice" href="slices/slice_115.png"><img src="slices/slice_115.png" alt="slice_115"><span>slice_115</span></a>
+<a class="slice" href="slices/slice_116.png"><img src="slices/slice_116.png" alt="slice_116"><span>slice_116</span></a>
+<a class="slice" href="slices/slice_117.png"><img src="slices/slice_117.png" alt="slice_117"><span>slice_117</span></a>
+<a class="slice" href="slices/slice_118.png"><img src="slices/slice_118.png" alt="slice_118"><span>slice_118</span></a>
+<a class="slice" href="slices/slice_119.png"><img src="slices/slice_119.png" alt="slice_119"><span>slice_119</span></a>
+    </div>
+  </main>
+</body>
+</html>

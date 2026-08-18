@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Medical Imaging Dataset Analysis Report</title>
+
+<style>
+:root {
+  --text: #172026;
+  --muted: #5f6b73;
+  --line: #d8dee3;
+  --panel: #f6f8fa;
+  --accent: #1f6feb;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 32px;
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  background: white;
+  line-height: 1.45;
+}
+.report-header {
+  border-bottom: 2px solid var(--line);
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+}
+.eyebrow {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+h1 { font-size: 30px; margin: 0 0 8px; }
+h2 {
+  border-bottom: 1px solid var(--line);
+  font-size: 21px;
+  margin: 34px 0 14px;
+  padding-bottom: 6px;
+}
+h3 {
+  color: #26333b;
+  font-size: 16px;
+  margin: 20px 0 8px;
+}
+table {
+  border-collapse: collapse;
+  margin: 8px 0 18px;
+  width: 100%;
+}
+th, td {
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: var(--panel);
+  font-weight: 700;
+}
+.kv td:first-child {
+  color: var(--muted);
+  font-weight: 700;
+  width: 28%;
+}
+ul { margin-top: 8px; }
+.empty {
+  color: var(--muted);
+  font-style: italic;
+}
+@media print {
+  body { padding: 18px; }
+  h2 { break-after: avoid; }
+  table { break-inside: avoid; }
+}
+</style>
+
+</head>
+<body>
+
+<header class="report-header">
+  <p class="eyebrow">Medical Imaging Dataset Analysis</p>
+  <h1>dataset</h1>
+  <p>Generated on 2026-08-12 15:37</p>
+</header>
+
+<section><h2>Dataset Overview</h2>
+<table class="kv"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Dataset name</td><td>dataset</td></tr><tr><td>Split</td><td>all</td></tr><tr><td>Task type</td><td>segmentation</td></tr><tr><td>Task reason</td><td>Matching image and label NIfTI files were detected.</td></tr><tr><td>Minimum memory needed</td><td>115.20 MB</td></tr></tbody></table></section>
+<section><h2>Patients Information</h2>
+<table class="kv"><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody><tr><td>Number of patients</td><td>34</td></tr><tr><td>Number of analysed patients</td><td>34</td></tr><tr><td>Number of failed analyses</td><td>0</td></tr><tr><td>Number of patients with missing data</td><td>4</td></tr><tr><td>Annotations present</td><td>20</td></tr><tr><td>Annotations required</td><td>24</td></tr><tr><td>Annotations not required</td><td>10</td></tr><tr><td>Annotations missing</td><td>4</td></tr><tr><td>Analysis success</td><td>100%</td></tr><tr><td>Annotation coverage</td><td>83.333%</td></tr></tbody></table></section>
+<section><h2>Task Detection</h2>
+<table class="kv"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Detected task</td><td>segmentation</td></tr><tr><td>Reason</td><td>Matching image and label NIfTI files were detected.</td></tr><tr><td>Classification classes</td><td>None</td></tr><tr><td>Labels found</td><td>Yes</td></tr><tr><td>Label files detected</td><td>20</td></tr><tr><td>Image/label pairs detected</td><td>20</td></tr></tbody></table></section>
+<section><h2>Missing Data</h2>
+<table><thead><tr><th>Patient ID</th><th>Split</th><th>Missing data</th><th>Image</th><th>Label</th><th>Reason</th></tr></thead><tbody><tr><td>003</td><td>unknown</td><td>annotation label</td><td>serie_003.nii</td><td>Not available</td><td>Required patient data is absent from the detected dataset structure.</td></tr><tr><td>003</td><td>unknown</td><td>annotation label</td><td>serie_003.nii.gz</td><td>Not available</td><td>Required patient data is absent from the detected dataset structure.</td></tr><tr><td>005</td><td>unknown</td><td>annotation label</td><td>serie_005.nii.gz</td><td>Not available</td><td>Required patient data is absent from the detected dataset structure.</td></tr><tr><td>006</td><td>unknown</td><td>annotation label</td><td>serie_006.nii.gz</td><td>Not available</td><td>Required patient data is absent from the detected dataset structure.</td></tr></tbody></table></section>
+<section><h2>Image/Label Alignment</h2>
+<table class="kv"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Checked image/label pairs</td><td>20</td></tr><tr><td>Aligned pairs</td><td>20</td></tr><tr><td>Misaligned pairs</td><td>0</td></tr><tr><td>Alignment</td><td>100%</td></tr><tr><td>Explanation</td><td>Image and label are considered aligned when dimensions, voxel spacing, orientation, and affine matrix match within a small numerical tolerance.</td></tr></tbody></table><h3>Misaligned Patients</h3>
+<p class="empty">No data available.</p></section>
+<section><h2>Slice Count and Thickness</h2>
+<h3>Dimensionality</h3>
+<table><thead><tr><th>Value</th><th>Number of patients</th><th>Percentage</th></tr></thead><tbody><tr><td>3D</td><td>34</td><td>100%</td></tr></tbody></table><h3>Slices data</h3>
+<table><thead><tr><th>Number of slices</th><th>Slice thickness (mm)</th><th>Number of patients</th><th>Percentage</th></tr></thead><tbody><tr><td>120</td><td>1.37</td><td>9</td><td>26.471%</td></tr><tr><td>110</td><td>1.37</td><td>7</td><td>20.588%</td></tr><tr><td>100</td><td>1.37</td><td>5</td><td>14.706%</td></tr><tr><td>130</td><td>1.37</td><td>2</td><td>5.883%</td></tr><tr><td>512</td><td>0.955</td><td>2</td><td>5.882%</td></tr><tr><td>98</td><td>5</td><td>2</td><td>5.883%</td></tr><tr><td>109</td><td>1.37</td><td>1</td><td>2.941%</td></tr><tr><td>122</td><td>1.37</td><td>1</td><td>2.941%</td></tr><tr><td>137</td><td>1.37</td><td>1</td><td>2.941%</td></tr><tr><td>140</td><td>1.37</td><td>1</td><td>2.941%</td></tr><tr><td>180</td><td>0.75</td><td>1</td><td>2.941%</td></tr><tr><td>180</td><td>0.85</td><td>1</td><td>2.941%</td></tr><tr><td>90</td><td>1.37</td><td>1</td><td>2.941%</td></tr></tbody></table></section>
+<section><h2>Voxel Size</h2>
+<h3>Voxel Size (XxYxZ mm)</h3>
+<table><thead><tr><th>Value</th><th>Number of patients</th><th>Percentage</th></tr></thead><tbody><tr><td>1.25x1.25x1.37</td><td>28</td><td>82.353%</td></tr><tr><td>0.787x0.787x5</td><td>2</td><td>5.883%</td></tr><tr><td>0.955x3x0.955</td><td>2</td><td>5.882%</td></tr><tr><td>0.75x0.75x0.75</td><td>1</td><td>2.941%</td></tr><tr><td>0.75x0.75x0.85</td><td>1</td><td>2.941%</td></tr></tbody></table></section>
+<section><h2>Intensity Statistics</h2>
+<h3>Patient Intensity Summary</h3>
+<table><thead><tr><th>Statistic</th><th>Unit</th><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td>Minimum intensity</td><td>HU</td><td>-3024</td><td>Lowest voxel intensity in the dataset.</td></tr><tr><td>Maximum intensity</td><td>HU</td><td>2196</td><td>Highest voxel intensity in the dataset.</td></tr><tr><td>Mean intensity</td><td>HU</td><td>68.27</td><td>Average of the patient mean intensities.</td></tr><tr><td>Standard deviation</td><td>HU</td><td>320.974</td><td>Average of patient intensity standard deviations.</td></tr></tbody></table><h3>Intensity Scale Check</h3>
+<table class="kv"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Raw HU-like patients</td><td>34</td></tr><tr><td>Suspected normalized patients</td><td>0</td></tr><tr><td>Unknown intensity scale</td><td>0</td></tr><tr><td>Suspected normalized patient IDs</td><td>None</td></tr><tr><td>Explanation</td><td>This is a heuristic check. Raw CT is expected to look compatible with Hounsfield units. Volumes close to 0..1, -1..1, or centered around 0 with standard deviation near 1 are reported as suspected normalized.</td></tr></tbody></table><p class="empty">No data available.</p><h3>Voxel Validity</h3>
+<table class="kv"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Total voxels</td><td>490.432.512 voxels</td></tr><tr><td>Valid voxels</td><td>490.432.512 voxels (100%)</td></tr><tr><td>Non-finite voxels</td><td>0 voxels (0%)</td></tr><tr><td>Explanation</td><td>Finite voxels are valid numeric CT intensity values. Non-finite voxels are NaN or infinite values that should be cleaned before training.</td></tr></tbody></table></section>
+<section><h2>Statistics</h2>
+<table class="kv"><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody><tr><td>Same in-plane resolution</td><td>82.353%</td></tr><tr><td>Same slice count</td><td>26.471%</td></tr><tr><td>Same slice thickness</td><td>82.353%</td></tr><tr><td>Same voxel spacing</td><td>82.353%</td></tr><tr><td>Different voxel spacing</td><td>17.647%</td></tr><tr><td>Same dimensions</td><td>26.471%</td></tr><tr><td>Same orientation</td><td>88.235%</td></tr><tr><td>Dimensions are consistent</td><td>No</td></tr></tbody></table></section>
+<section><h2>Warnings</h2>
+<ul><li>4 patient(s) have missing data.</li><li>Voxel spacing varies across CT images.</li><li>Slice thickness varies across CT images.</li><li>Volume dimensions are not consistent across CT images.</li><li>Image orientation varies across CT images.</li></ul></section>
+<section><h2>Preprocessing Recommendations</h2>
+<table><thead><tr><th>Severity</th><th>Category</th><th>Recommendation</th><th>Reason</th></tr></thead><tbody><tr><td>high</td><td>annotations</td><td>Check missing labels or separate unlabeled test data from training data.</td><td>4 analyzed patient(s) have no annotation label.</td></tr><tr><td>high</td><td>spatial resampling</td><td>Resample CT images and labels to a common voxel spacing before AI training.</td><td>Only 82.353% of patients share the most common voxel spacing.</td></tr><tr><td>medium</td><td>slice thickness</td><td>Standardize slice thickness or use preprocessing that handles anisotropy.</td><td>Slice thickness differs across patients; the most common thickness covers 82.353% of patients.</td></tr><tr><td>medium</td><td>shape standardization</td><td>Crop, pad, resize, or patch volumes to a consistent training shape.</td><td>Volume dimensions differ; the most common dimensions cover 26.471% of patients.</td></tr><tr><td>medium</td><td>orientation</td><td>Reorient all images and labels to a common anatomical orientation.</td><td>Image orientations differ; the most common orientation covers 88.235% of patients.</td></tr><tr><td>medium</td><td>intensity normalization</td><td>Apply CT intensity clipping and normalization before model training.</td><td>CT images are commonly normalized to reduce scanner and protocol differences.</td></tr><tr><td>info</td><td>memory</td><td>Plan at least the estimated minimum memory per loaded CT volume, plus overhead for batching and preprocessing.</td><td>Estimated minimum memory for this analyzer is 115.20 MB.</td></tr></tbody></table></section>
+</body>
+</html>

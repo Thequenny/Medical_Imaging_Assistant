@@ -151,11 +151,28 @@ activemq-data/
 .env
 .envrc
 .venv
+qwen_env/
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Local datasets
+dataset/
+data/nii/
+*.nii
+*.gz
+
+# Local images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tif
+*.tiff
+*.webp
 
 # Spyder project settings
 .spyderproject

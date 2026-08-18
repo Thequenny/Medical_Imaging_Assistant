@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Python: exécuter le fichier actuel (.venv)",
+            "type": "process",
+            "command": "${workspaceFolder}/.venv/bin/python",
+            "args": [
+                "${file}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

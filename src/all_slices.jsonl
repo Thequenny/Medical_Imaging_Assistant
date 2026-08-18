@@ -1,0 +1,13 @@
+{"organs": ["liver", "right kidney", "left kidney", "spleen"], "pixel": {"liver": 38000, "right kidney": 2900, "left kidney": 2750, "spleen": 12000}, "vertebra": "T1"}
+{"organs": ["liver", "right kidney", "left kidney"], "pixel": {"liver": 389, "right kidney": 145, "left kidney": 128}, "vertebra": "T1"}
+{"organs": ["liver", "right kidney", "left kidney"], "pixel": {"liver": 48654, "right kidney": 23586, "left kidney": 22105}, "vertebra": "T2"}
+{"organs": ["liver", "right kidney", "left kidney"], "pixel": {"liver": 4200, "right kidney": 3500, "left kidney": 3200}, "vertebra": "T1"}
+{"organs": ["liver", "right kidney", "left kidney", "spleen"], "pixel": {"liver": 9500, "right kidney": 2800, "left kidney": 2600, "spleen": 3200}, "vertebra": "T1"}
+{"organs": ["liver", "right kidney", "left kidney", "spleen"], "pixel": {"liver": 4500, "right kidney": 1892, "left kidney": 1735, "spleen": 2146}, "vertebra": "T1"}
+{"organs": ["liver", "right kidney", "left kidney", "spleen"], "pixel": {"liver": 1374, "right kidney": 1092, "left kidney": 1166, "spleen": 653}, "vertebra": "T1"}
+{"organs": ["liver", "right kidney", "left kidney", "spleen"], "pixel": {"liver": 450, "right kidney": 320, "left kidney": 310, "spleen": 280}, "vertebra": "T1"}
+{"organs": ["liver", "right kidney", "left kidney", "spleen"], "pixel": {"liver": 401, "right kidney": 153, "left kidney": 214, "spleen": 89}, "vertebra": "T2"}
+{"organs": ["liver", "right kidney", "left kidney", "spleen"], "pixel": {"liver": 485000, "right_kidney": 31200, "left_kidney": 33500, "spleen": 72100}, "vertebra": "T1"}
+{"organs": ["liver", "right kidney", "left kidney", "spleen"], "pixel": {"liver": 48500, "right kidney": 92000, "left kidney": 15000, "spleen": 7500}, "vertebra": "T1"}
+{"organs": ["liver", "right kidney", "left kidney", "spleen"], "pixel": {"liver": 10500, "spleen": 2800, "right kidney": 1900, "left kidney": 2000}, "vertebra": "T2"}
+{"organs": ["liver", "right kidney", "left kidney", "spleen"], "pixel": {"liver": 4820, "right kidney": 1520, "left kidney": 1480, "spleen": 1105}, "vertebra": "T1"}
