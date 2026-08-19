@@ -8,6 +8,9 @@ from openai import OpenAI
 from slices_analyse import convert_to_png
 
 
+MAX_PATIENTS = 10
+
+
 client = OpenAI(
     base_url="https://spark-da32.tail67be05.ts.net:8443/v1",
     api_key="9f16632ff4b7a61eea6c1a9aa8f37464b9d2f795395ac45e",
@@ -25,6 +28,9 @@ data = []
 with open("src/train.jsonl", "r", encoding="utf-8") as f:
     for line in f:
         data.append(json.loads(line))
+
+# Limit the run to the first patients while preserving the resume mechanism.
+data = data[:MAX_PATIENTS]
 
 # Access a sample from train.jsonl.
 sample = data[3]
