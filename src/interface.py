@@ -544,7 +544,7 @@ def show_report():
 
     qwen_analysis_frame = tk.LabelFrame(
         left_frame,
-        text="Visual analysis with Qwen",
+        text="Slice analysis",
         padx=8,
         pady=8,
     )

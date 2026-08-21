@@ -7,7 +7,8 @@ on the client side, before it ever reaches the model.
 
 Setup:
     pip install openai pymupdf
-    export OLLAMA_API_KEY="<your token>"
+    cp .env.example .env
+    # Then set QWEN_API_KEY in .env.
 
 Usage:
     python pdf_tools_demo.py paper.pdf "What is the main contribution?"
@@ -18,7 +19,6 @@ Usage:
 import argparse
 import base64
 import json
-import os
 import sys
 
 try:
@@ -33,23 +33,13 @@ except ImportError:
             "installed and causes a `frontend` import error, uninstall it with "
             "`python -m pip uninstall fitz`."
         ) from error
-from openai import OpenAI
-
-BASE_URL = os.environ.get(
-    "OLLAMA_BASE_URL", "https://spark-da32.tail67be05.ts.net:8443/v1"
-)
-MODEL = os.environ.get("OLLAMA_MODEL", "qwen3.6:35b")
+from api_config import QWEN_MODEL, create_qwen_client
 
 
 def create_client():
     """Create the API client only when a model request is actually made."""
 
-    api_key = os.environ.get("OLLAMA_API_KEY")
-    if not api_key:
-        raise RuntimeError(
-            "OLLAMA_API_KEY is not set. Export it before sending a model request."
-        )
-    return OpenAI(base_url=BASE_URL, api_key=api_key)
+    return create_qwen_client()
 
 
 # --------------------------------------------------------------------------
@@ -219,7 +209,7 @@ def chat_with_tools(question, pdf_path, max_rounds=8):
 
     for round_no in range(max_rounds):
         resp = client.chat.completions.create(
-            model=MODEL,
+            model=QWEN_MODEL,
             messages=messages,
             tools=TOOLS,
             stream=False,  # tool calls need a non-streaming response
@@ -259,7 +249,7 @@ def ask_about_page_image(pdf_path, page, question, dpi=150):
     b64 = base64.b64encode(png).decode()
 
     resp = client.chat.completions.create(
-        model=MODEL,
+        model=QWEN_MODEL,
         messages=[{
             "role": "user",
             "content": [

@@ -1,5 +1,4 @@
 from pathlib import Path
-from openai import OpenAI
 import base64
 from datetime import datetime
 from html import escape
@@ -27,11 +26,8 @@ import argparse
 import base64
 import markdown as md_lib
 
+from api_config import QWEN_MODEL, create_qwen_client
 
-client = OpenAI(
-    base_url="https://spark-da32.tail67be05.ts.net:8443/v1",
-    api_key="9f16632ff4b7a61eea6c1a9aa8f37464b9d2f795395ac45e",
-)
 
 DEFAULT_SLICE_ANALYSIS_PROMPT = """
 Tu recois une serie ordonnee de coupes d'imagerie medicale.
@@ -539,6 +535,8 @@ def chat_qwen(
     image_paths=None,
     max_tool_rounds=4,
 ):
+    client = create_qwen_client()
+
     if messages is None:
         messages = []
 
@@ -567,7 +565,7 @@ def chat_qwen(
 
     for _round_number in range(max_tool_rounds):
         response = client.chat.completions.create(
-            model="qwen3.6:35b",
+            model=QWEN_MODEL,
             messages=messages,
             tools=TOOLS,
             stream=False

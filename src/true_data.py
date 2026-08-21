@@ -1,45 +1,52 @@
 import argparse
 import base64
 import json
+from contextlib import ExitStack
 from pathlib import Path
 
-import numpy as np
 from huggingface_hub import snapshot_download
-from openai import OpenAI
+
+from api_config import QWEN_MODEL, create_qwen_client
 
 
-DEFAULT_MAX_CASES = 10
+DEFAULT_PATIENTS_PER_SEQUENCE = 5
+RESPONSE_COUNT = 3
+SEQUENCES = ("T1", "T2")
+
 PROJECT_DIR = Path(__file__).resolve().parents[1]
 TRAIN_PATH = PROJECT_DIR / "src" / "train.jsonl"
 REFERENCE_PATH = PROJECT_DIR / "src" / "dice.jsonl"
-PREDICTION_PATH = PROJECT_DIR / "src" / "all_slices.jsonl"
+PREDICTION_PATHS = {
+    response_number: (
+        PROJECT_DIR / "src" / f"predictions_run_{response_number}.jsonl"
+    )
+    for response_number in range(1, RESPONSE_COUNT + 1)
+}
 DATASET_DIR = PROJECT_DIR / "data" / "nii" / "CHAOS"
 
 DATASET_REPO_ID = "Angelou0516/chaos-mri"
 DATASET_PATH_PREFIX = Path("data/nii/CHAOS")
 
-QWEN_BASE_URL = "https://spark-da32.tail67be05.ts.net:8443/v1"
-QWEN_API_KEY = "9f16632ff4b7a61eea6c1a9aa8f37464b9d2f795395ac45e"
-QWEN_MODEL = "qwen3.6:35b"
-
-
 PROMPT = """
 Tu vas recevoir toutes les coupes axiales d'un même volume IRM abdominal,
 classées dans leur ordre d'origine.
 
-Analyse l'ensemble du volume et réponds uniquement avec un objet JSON valide,
-sur une seule ligne, sans Markdown, sans commentaire et sans bloc ```json.
+Cette requête est une évaluation indépendante. Réponds toujours aux deux mêmes
+questions :
+1. Quels organes sont visibles ?
+2. La séquence IRM est-elle T1 ou T2 ?
+
+Réponds uniquement avec un objet JSON valide, sur une seule ligne, sans
+Markdown, sans commentaire et sans bloc ```json.
 
 Le format attendu est exactement :
-{"organs": [], "pixel": {}, "vertebra": ""}
+{"organs": [], "sequence": ""}
 
 Explication :
 - "organs" contient uniquement les organes visibles parmi : liver,
   right kidney, left kidney et spleen ;
-- "pixel" associe chaque organe visible au nombre total estimé de pixels qu'il
-  occupe sur l'ensemble des coupes, sous la forme d'un entier positif ;
-- pour rester compatible avec le JSON de référence, "vertebra" contient le
-  type de séquence IRM détecté : "T1" ou "T2" ;
+- "sequence" contient le type de séquence IRM détecté : "T1" ou "T2" ;
+- ne calcule et ne retourne aucun nombre de pixels ;
 - utilise exactement les noms de champs et d'organes indiqués ci-dessus.
 """
 
@@ -49,17 +56,85 @@ def load_jsonl(path):
         return [json.loads(line) for line in file if line.strip()]
 
 
-def load_cases(max_cases):
-    if max_cases <= 0:
-        raise ValueError("Le nombre d'examens doit être strictement positif.")
+def case_sequence(case):
+    return case.get("modality", "").removeprefix("MRI ").strip().upper()
 
-    cases = load_jsonl(TRAIN_PATH)
-    if len(cases) < max_cases:
+
+def load_balanced_case_groups(
+    patients_per_sequence=DEFAULT_PATIENTS_PER_SEQUENCE,
+):
+    if patients_per_sequence <= 0:
         raise ValueError(
-            f"Seulement {len(cases)} examens sont disponibles dans {TRAIN_PATH}."
+            "Le nombre de patients par séquence doit être strictement positif."
         )
 
-    return cases[:max_cases]
+    cases = load_jsonl(TRAIN_PATH)
+    references = load_jsonl(REFERENCE_PATH)
+    if len(cases) != len(references):
+        raise ValueError(
+            "Le nombre d'examens et le nombre de références ne correspondent "
+            f"pas : {len(cases)} contre {len(references)}."
+        )
+
+    patient_order = []
+    records_by_patient = {}
+
+    for case, reference in zip(cases, references):
+        sequence = case_sequence(case)
+        if sequence not in SEQUENCES:
+            continue
+
+        reference_sequence = str(reference.get("vertebra", "")).upper()
+        if reference_sequence != sequence:
+            raise ValueError(
+                "Séquence incohérente pour le patient "
+                f"{case.get('patient_id')}: {sequence} dans {TRAIN_PATH}, "
+                f"mais {reference_sequence or 'vide'} dans {REFERENCE_PATH}."
+            )
+
+        patient_id = str(case.get("patient_id"))
+        if patient_id not in records_by_patient:
+            patient_order.append(patient_id)
+            records_by_patient[patient_id] = {}
+
+        # CHAOS contient deux volumes T1 par patient. Le premier est conservé
+        # afin que chaque patient ne soit présent qu'une fois dans le groupe T1.
+        records_by_patient[patient_id].setdefault(
+            sequence,
+            {"case": case, "reference": reference},
+        )
+
+    eligible_patient_ids = [
+        patient_id
+        for patient_id in patient_order
+        if all(
+            sequence in records_by_patient[patient_id]
+            for sequence in SEQUENCES
+        )
+    ]
+
+    required_patient_count = patients_per_sequence * len(SEQUENCES)
+    if len(eligible_patient_ids) < required_patient_count:
+        raise ValueError(
+            f"Seulement {len(eligible_patient_ids)} patients possèdent à la "
+            f"fois une séquence T1 et une séquence T2 ; "
+            f"{required_patient_count} sont requis pour former deux groupes "
+            "sans patient commun."
+        )
+
+    patient_ids_by_sequence = {
+        "T1": eligible_patient_ids[:patients_per_sequence],
+        "T2": eligible_patient_ids[
+            patients_per_sequence:required_patient_count
+        ],
+    }
+    return {
+        sequence: [
+            records_by_patient[patient_id][sequence]
+            for patient_id in patient_ids_by_sequence[sequence]
+        ]
+        for sequence in SEQUENCES
+    }
 
 
 def dataset_relative_path(path):
@@ -71,21 +146,22 @@ def dataset_relative_path(path):
         ) from error
 
 
-def download_dataset(cases, download_all=False):
+def download_dataset(case_groups, download_all=False):
     if download_all:
         allow_patterns = None
         print("Téléchargement du dataset CHAOS MRI complet...")
     else:
         allow_patterns = sorted(
             {
-                dataset_relative_path(case[path_type])
-                for case in cases
-                for path_type in ("image", "mask")
+                dataset_relative_path(record["case"]["image"])
+                for records in case_groups.values()
+                for record in records
             }
         )
+        patient_count = sum(len(records) for records in case_groups.values())
         print(
-            "Téléchargement limité aux fichiers nécessaires aux "
-            f"{len(cases)} examens..."
+            "Téléchargement limité aux images nécessaires aux "
+            f"{patient_count} analyses..."
         )
 
     snapshot_download(
@@ -96,49 +172,137 @@ def download_dataset(cases, download_all=False):
     )
 
 
-def load_existing_predictions(prediction_path, max_cases):
+def ordered_case_records(case_groups):
+    return [
+        record
+        for sequence in SEQUENCES
+        for record in case_groups[sequence]
+    ]
+
+
+def load_existing_predictions(prediction_path, records):
     prediction_path = Path(prediction_path)
     if not prediction_path.exists():
         return []
 
     predictions = load_jsonl(prediction_path)
-    if len(predictions) > max_cases:
-        print(
-            f"{len(predictions) - max_cases} ancienne(s) prédiction(s) "
-            f"supplémentaire(s) seront ignorée(s)."
+    if len(predictions) > len(records):
+        raise ValueError(
+            f"{prediction_path} contient {len(predictions)} prédictions, "
+            f"mais {len(records)} seulement sont attendues."
         )
 
-    return predictions[:max_cases]
+    for record, prediction in zip(records, predictions):
+        expected_patient_id = str(record["case"]["patient_id"])
+        prediction_patient_id = str(prediction.get("patient_id", ""))
+        if prediction_patient_id != expected_patient_id:
+            raise ValueError(
+                f"Patient inattendu dans {prediction_path}: "
+                f"{prediction_patient_id or 'identifiant absent'} au lieu de "
+                f"{expected_patient_id}."
+            )
+
+    return predictions
 
 
-def generate_predictions(cases, prediction_path=PREDICTION_PATH):
+def normalize_prediction(answer, patient_id):
+    if not isinstance(answer, dict):
+        raise ValueError("La réponse de Qwen doit être un objet JSON.")
+
+    organs = answer.get("organs")
+    if not isinstance(organs, list) or not all(
+        isinstance(organ, str) for organ in organs
+    ):
+        raise ValueError("Le champ 'organs' doit être une liste de textes.")
+
+    sequence = answer.get("sequence", answer.get("vertebra", ""))
+    if not isinstance(sequence, str):
+        raise ValueError("Le champ 'sequence' doit être un texte.")
+
+    return {
+        "patient_id": patient_id,
+        "organs": organs,
+        "sequence": sequence.strip().upper(),
+    }
+
+
+def build_model_task(output_dir, number_of_slices):
+    task = [{"type": "text", "text": PROMPT}]
+
+    for slice_number in range(number_of_slices):
+        slice_path = output_dir / f"slice_{slice_number:03d}.png"
+        with slice_path.open("rb") as image_file:
+            image_base64 = base64.b64encode(image_file.read()).decode("utf-8")
+
+        task.append(
+            {
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/png;base64,{image_base64}"
+                },
+            }
+        )
+
+    return task
+
+
+def generate_predictions(records, prediction_paths=PREDICTION_PATHS):
     from slices_analyse import convert_to_png
 
-    prediction_path = Path(prediction_path)
-    predictions = load_existing_predictions(prediction_path, len(cases))
-    completed = len(predictions)
+    prediction_paths = {
+        response_number: Path(path)
+        for response_number, path in prediction_paths.items()
+    }
+    completed_by_response = {
+        response_number: len(load_existing_predictions(path, records))
+        for response_number, path in prediction_paths.items()
+    }
 
-    if completed == len(cases):
-        print(f"Les {len(cases)} examens ont déjà été analysés.")
+    if all(
+        completed == len(records)
+        for completed in completed_by_response.values()
+    ):
+        print(
+            f"Les {RESPONSE_COUNT} réponses ont déjà été générées pour les "
+            f"{len(records)} patients."
+        )
         return
 
-    print(f"Reprise à l'examen {completed + 1}/{len(cases)}")
+    for response_number, completed in completed_by_response.items():
+        print(
+            f"Réponse {response_number}/{RESPONSE_COUNT}: "
+            f"{completed}/{len(records)} patients déjà analysés."
+        )
 
-    client = OpenAI(
-        base_url=QWEN_BASE_URL,
-        api_key=QWEN_API_KEY,
-        timeout=300.0,
-    )
+    client = create_qwen_client(timeout=300.0)
 
-    prediction_path.parent.mkdir(parents=True, exist_ok=True)
-    with prediction_path.open("a", encoding="utf-8") as output_file:
-        for patient_number, patient in enumerate(
-            cases[completed:],
-            start=completed + 1,
-        ):
+    for prediction_path in prediction_paths.values():
+        prediction_path.parent.mkdir(parents=True, exist_ok=True)
+
+    with ExitStack() as stack:
+        output_files = {
+            response_number: stack.enter_context(
+                prediction_paths[response_number].open("a", encoding="utf-8")
+            )
+            for response_number, completed in completed_by_response.items()
+            if completed < len(records)
+        }
+
+        for patient_index, record in enumerate(records):
+            pending_responses = [
+                response_number
+                for response_number, completed in completed_by_response.items()
+                if patient_index >= completed
+            ]
+            if not pending_responses:
+                continue
+
+            patient = record["case"]
+            patient_id = patient["patient_id"]
+            sequence = case_sequence(patient)
             print(
-                f"[{patient_number}/{len(cases)}] Conversion des coupes de "
-                f"l'examen {patient['patient_id']}...",
+                f"[{patient_index + 1}/{len(records)} - {sequence}] Conversion "
+                f"des coupes du patient {patient_id}...",
                 flush=True,
             )
             image_path = PROJECT_DIR / patient["image"]
@@ -147,64 +311,102 @@ def generate_predictions(cases, prediction_path=PREDICTION_PATH):
                 image_path,
                 root_dir=PROJECT_DIR,
             )
+            task = build_model_task(output_dir, number_of_slices)
 
-            task = [{"type": "text", "text": PROMPT}]
-            for slice_number in range(number_of_slices):
-                slice_path = output_dir / f"slice_{slice_number:03d}.png"
-                with slice_path.open("rb") as image_file:
-                    image_base64 = base64.b64encode(image_file.read()).decode(
-                        "utf-8"
-                    )
-
-                task.append(
-                    {
-                        "type": "image_url",
-                        "image_url": {
-                            "url": f"data:image/png;base64,{image_base64}"
-                        },
-                    }
+            for response_number in pending_responses:
+                print(
+                    f"[{patient_index + 1}/{len(records)} - {sequence}] "
+                    f"Discussion indépendante {response_number}/"
+                    f"{RESPONSE_COUNT}: envoi de {number_of_slices} coupes...",
+                    flush=True,
+                )
+                response = client.chat.completions.create(
+                    model=QWEN_MODEL,
+                    # Une nouvelle liste de messages garantit que cette requête
+                    # ne contient aucune réponse ou discussion précédente.
+                    messages=[{"role": "user", "content": task}],
                 )
 
-            print(
-                f"[{patient_number}/{len(cases)}] Envoi de "
-                f"{number_of_slices} coupes à Qwen...",
-                flush=True,
-            )
-            response = client.chat.completions.create(
-                model=QWEN_MODEL,
-                messages=[{"role": "user", "content": task}],
-            )
-
-            answer = json.loads(response.choices[0].message.content)
-            output_file.write(json.dumps(answer, ensure_ascii=False) + "\n")
-            output_file.flush()
-            print(
-                f"[{patient_number}/{len(cases)}] Réponse enregistrée dans "
-                f"{prediction_path}",
-                flush=True,
-            )
+                answer = json.loads(response.choices[0].message.content)
+                prediction = normalize_prediction(answer, patient_id)
+                output_file = output_files[response_number]
+                output_file.write(
+                    json.dumps(prediction, ensure_ascii=False) + "\n"
+                )
+                output_file.flush()
+                print(
+                    f"Réponse enregistrée dans "
+                    f"{prediction_paths[response_number]}.",
+                    flush=True,
+                )
 
 
-def calculate_score(true_path, prediction_path, max_cases=DEFAULT_MAX_CASES):
-    true_data = load_jsonl(true_path)[:max_cases]
-    predictions = load_jsonl(prediction_path)[:max_cases]
+def empty_sequence_confusion_matrix():
+    return {
+        actual_sequence: {
+            "T1": 0,
+            "T2": 0,
+            "invalide": 0,
+        }
+        for actual_sequence in SEQUENCES
+    }
 
-    if len(true_data) != max_cases:
+
+def build_sequence_confusion_matrix(records, predictions):
+    matrix = empty_sequence_confusion_matrix()
+
+    for record, prediction in zip(records, predictions):
+        actual_sequence = str(record["reference"]["vertebra"]).upper()
+        predicted_sequence = str(prediction.get("sequence", "")).upper()
+        if predicted_sequence not in SEQUENCES:
+            predicted_sequence = "invalide"
+
+        matrix[actual_sequence][predicted_sequence] += 1
+
+    return matrix
+
+
+def merge_sequence_confusion_matrices(matrices):
+    merged = empty_sequence_confusion_matrix()
+
+    for matrix in matrices:
+        for actual_sequence in SEQUENCES:
+            for predicted_sequence in (*SEQUENCES, "invalide"):
+                merged[actual_sequence][predicted_sequence] += matrix[
+                    actual_sequence
+                ][predicted_sequence]
+
+    return merged
+
+
+def sequence_accuracy(matrix):
+    total = sum(sum(row.values()) for row in matrix.values())
+    if total == 0:
+        raise ValueError("La matrice de confusion est vide.")
+
+    correct = sum(matrix[sequence][sequence] for sequence in SEQUENCES)
+    return round(correct / total * 100, 2)
+
+
+def calculate_organ_score(records, predictions):
+    if len(records) != len(predictions):
         raise ValueError(
-            f"{max_cases} références sont requises, mais {len(true_data)} "
-            "seulement sont disponibles."
+            f"{len(records)} prédictions sont requises, mais "
+            f"{len(predictions)} seulement sont disponibles."
         )
-    if len(predictions) != max_cases:
-        raise ValueError(
-            f"{max_cases} prédictions sont requises, mais {len(predictions)} "
-            "seulement sont disponibles."
-        )
+    if not records:
+        raise ValueError("Aucun patient à évaluer.")
 
     organ_scores = []
-    pixel_scores = []
-    sequence_scores = []
+    for record, prediction in zip(records, predictions):
+        expected_patient_id = str(record["case"]["patient_id"])
+        if str(prediction.get("patient_id", "")) != expected_patient_id:
+            raise ValueError(
+                f"La prédiction ne correspond pas au patient "
+                f"{expected_patient_id}."
+            )
 
-    for true, prediction in zip(true_data, predictions):
+        true = record["reference"]
         true_organs = set(true["organs"])
         predicted_organs = set(prediction.get("organs", []))
         organ_denominator = len(true_organs) + len(predicted_organs)
@@ -214,79 +416,114 @@ def calculate_score(true_path, prediction_path, max_cases=DEFAULT_MAX_CASES):
             else 1.0
         )
 
-        organ_pixel_scores = []
-        for organ, true_pixels in true["pixel"].items():
-            predicted_pixels = prediction.get("pixel", {}).get(organ, 0)
-            if not isinstance(predicted_pixels, (int, float)):
-                predicted_pixels = 0
+    organ_score = sum(organ_scores) / len(organ_scores)
+    return round(organ_score * 100, 2)
 
-            predicted_pixels = max(predicted_pixels, 0)
-            total_pixels = true_pixels + predicted_pixels
-            organ_pixel_scores.append(
-                2 * min(true_pixels, predicted_pixels) / total_pixels
-                if total_pixels > 0
-                else 1.0
-            )
 
-        pixel_scores.append(
-            float(np.mean(organ_pixel_scores)) if organ_pixel_scores else 1.0
-        )
-        sequence_scores.append(
-            true["vertebra"] == prediction.get("vertebra", "")
+def calculate_response_scores(case_groups, predictions):
+    records = ordered_case_records(case_groups)
+    if len(records) != len(predictions):
+        raise ValueError(
+            f"{len(records)} prédictions sont requises, mais "
+            f"{len(predictions)} seulement sont disponibles."
         )
 
-    organ_score = float(np.mean(organ_scores))
-    pixel_score = float(np.mean(pixel_scores))
-    sequence_score = float(np.mean(sequence_scores))
+    organ_scores = {}
+    offset = 0
+
+    for sequence in SEQUENCES:
+        sequence_records = case_groups[sequence]
+        end = offset + len(sequence_records)
+        organ_scores[sequence] = calculate_organ_score(
+            sequence_records,
+            predictions[offset:end],
+        )
+        offset = end
+
+    sequence_matrix = build_sequence_confusion_matrix(records, predictions)
 
     return {
-        "examens_evalues": max_cases,
-        "score_organes (en %)": round(organ_score * 100, 2),
-        "score_pixels (en %)": round(pixel_score * 100, 2),
-        "score_sequence_IRM (en %)": round(sequence_score * 100, 2),
-        "score_global (en %)": round(
-            np.mean([organ_score, pixel_score, sequence_score]) * 100,
-            2,
-        ),
+        "patients_evalues": len(records),
+        "score_organes_par_sequence (en %)": organ_scores,
+        "matrice_confusion_sequence": sequence_matrix,
+        "score_sequence_IRM (en %)": sequence_accuracy(sequence_matrix),
     }
+
+
+def calculate_all_scores(case_groups, prediction_paths=PREDICTION_PATHS):
+    records = ordered_case_records(case_groups)
+    scores = {}
+    sequence_matrices = []
+
+    for response_number, prediction_path in prediction_paths.items():
+        prediction_path = Path(prediction_path)
+        if not prediction_path.exists():
+            raise ValueError(
+                f"Le fichier {prediction_path} est introuvable. Lancez le "
+                "script sans --score-only pour générer les prédictions."
+            )
+
+        predictions = load_existing_predictions(prediction_path, records)
+        response_scores = calculate_response_scores(
+            case_groups,
+            predictions,
+        )
+        scores[f"reponse_{response_number}"] = response_scores
+        sequence_matrices.append(
+            response_scores["matrice_confusion_sequence"]
+        )
+
+    merged_matrix = merge_sequence_confusion_matrices(sequence_matrices)
+    scores["synthese_sequence_3_reponses"] = {
+        "predictions_evaluees": sum(
+            sum(row.values()) for row in merged_matrix.values()
+        ),
+        "matrice_confusion_sequence": merged_matrix,
+        "score_sequence_IRM (en %)": sequence_accuracy(merged_matrix),
+    }
+
+    return scores
 
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Évalue Qwen sur un petit échantillon du dataset CHAOS MRI."
+        description=(
+            "Évalue Qwen sur deux groupes équilibrés de patients CHAOS MRI."
+        )
     )
     parser.add_argument(
         "--download-all",
         action="store_true",
-        help="Télécharger le dataset complet au lieu des fichiers de l'échantillon.",
+        help="Télécharger le dataset complet au lieu des images sélectionnées.",
     )
     parser.add_argument(
+        "--patients-per-sequence",
         "--max-cases",
+        dest="patients_per_sequence",
         type=int,
-        default=DEFAULT_MAX_CASES,
-        help=f"Nombre d'examens à analyser (défaut : {DEFAULT_MAX_CASES}).",
+        default=DEFAULT_PATIENTS_PER_SEQUENCE,
+        help=(
+            "Nombre de patients distincts à analyser pour chacune des "
+            f"séquences T1 et T2 (défaut : {DEFAULT_PATIENTS_PER_SEQUENCE})."
+        ),
     )
     parser.add_argument(
         "--score-only",
         action="store_true",
-        help="Calculer le score existant sans téléchargement ni appel à Qwen.",
+        help="Calculer les scores existants sans téléchargement ni appel à Qwen.",
     )
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
-    cases = load_cases(args.max_cases)
+    case_groups = load_balanced_case_groups(args.patients_per_sequence)
 
     if not args.score_only:
-        download_dataset(cases, download_all=args.download_all)
-        generate_predictions(cases)
+        download_dataset(case_groups, download_all=args.download_all)
+        generate_predictions(ordered_case_records(case_groups))
 
-    scores = calculate_score(
-        REFERENCE_PATH,
-        PREDICTION_PATH,
-        max_cases=len(cases),
-    )
+    scores = calculate_all_scores(case_groups)
     print(json.dumps(scores, indent=2, ensure_ascii=False))
 
 

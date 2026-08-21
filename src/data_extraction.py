@@ -1,15 +1,11 @@
 from pathlib import Path
-from openai import OpenAI
 import base64
 import nibabel as nib
 import numpy as np
 from PIL import Image
 from reportlab.pdfgen import canvas
 
-client = OpenAI(
-    base_url="https://spark-da32.tail67be05.ts.net:8443/v1",
-    api_key="9f16632ff4b7a61eea6c1a9aa8f37464b9d2f795395ac45e",
-)
+from api_config import QWEN_MODEL, create_qwen_client
 
 
 image = nib.load("dataset/serie_003.nii.gz")
@@ -47,7 +43,7 @@ output_dir, number_of_slices = convert_to_png(image)
 
  # mini chat (questions-answers)
 def chat_qwen(output_dir, number_of_slices):
-   
+    client = create_qwen_client()
     messages = []
     slices = np.arange(0, number_of_slices)
 
@@ -72,7 +68,7 @@ def chat_qwen(output_dir, number_of_slices):
         messages.append({"role": "user","content": task})
 
         resp = client.chat.completions.create(
-              model="qwen3.6:35b",
+              model=QWEN_MODEL,
               messages=messages,
           )
         answer = resp.choices[0].message.content
