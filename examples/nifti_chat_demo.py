@@ -5,7 +5,10 @@ import numpy as np
 from PIL import Image
 from reportlab.pdfgen import canvas
 
-from api_config import QWEN_MODEL, create_qwen_client
+from src.test_accuracy_evaluation.api_config import (
+    QWEN_MODEL,
+    create_qwen_client,
+)
 
 
 image = nib.load("dataset/serie_003.nii.gz")

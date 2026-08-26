@@ -16,19 +16,36 @@ from pathlib import Path
 from statistics import mean, median
 from typing import Any, Iterable
 
-from check_structure_dataset import DatasetStructure, identify_dataset_structure
-from nifti_analyzer import (
-    DatasetNiftiPreparationError,
-    NiftiMetadata,
-    PatientAnalysis,
-    analyze_patient,
-    prepare_dataset_nifti_files,
-)
+try:
+    from .check_structure_dataset import (
+        DatasetStructure,
+        identify_dataset_structure,
+    )
+    from .nifti_analyzer import (
+        DatasetNiftiPreparationError,
+        NiftiMetadata,
+        PatientAnalysis,
+        analyze_patient,
+        prepare_dataset_nifti_files,
+    )
+except ImportError:
+    from check_structure_dataset import (
+        DatasetStructure,
+        identify_dataset_structure,
+    )
+    from nifti_analyzer import (
+        DatasetNiftiPreparationError,
+        NiftiMetadata,
+        PatientAnalysis,
+        analyze_patient,
+        prepare_dataset_nifti_files,
+    )
 
 
 SPATIAL_ROUNDING_DIGITS = 3
 ALIGNMENT_TOLERANCE = 1e-3
-DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "data" / "analyse_dataset.json"
+PROJECT_DIR = Path(__file__).resolve().parents[1]
+DEFAULT_OUTPUT = PROJECT_DIR / "data" / "dataset_analysis" / "analyse_dataset.json"
 
 
 @dataclass
@@ -76,8 +93,6 @@ class DatasetCounts:
     image_files_detected: int
     label_files_detected: int
     image_label_pairs_detected: int
-    annotations_required: int
-    annotations_not_required: int
     annotations_present: int
     annotations_missing: int
 
@@ -459,11 +474,7 @@ def analyze_dataset(
         )
 
     counts = _build_counts(structure, work_items, patients, failed_patients, split)
-    evaluation = evaluate_dataset(
-        patients,
-        failed_patients,
-        task_type=structure.task_type,
-    )
+    evaluation = evaluate_dataset(patients, failed_patients)
     report_preparation = _build_report_preparation(
         root=root,
         split=split,
@@ -487,7 +498,6 @@ def analyze_dataset(
 def evaluate_dataset(
     patients: list[PatientDatasetEntry],
     failed_patients: list[FailedPatientAnalysis] | None = None,
-    task_type: str = "segmentation",
 ) -> DatasetEvaluation:
     """Compute storage, memory, and metadata consistency summaries."""
 
@@ -504,7 +514,7 @@ def evaluate_dataset(
     consistency = _evaluate_consistency(image_metadata)
     alignment = _evaluate_label_alignment(patients)
     intensity = _evaluate_intensity(patients)
-    missing_data = _find_missing_data(patients, failed_patients, task_type)
+    missing_data = _find_missing_data(patients, failed_patients)
     warnings = _build_evaluation_warnings(
         patient_count=len(patients),
         failed_count=len(failed_patients),
@@ -516,7 +526,6 @@ def evaluate_dataset(
     preprocessing_recommendations = _build_preprocessing_recommendations(
         patients=patients,
         failed_patients=failed_patients,
-        task_type=task_type,
         memory=memory,
         consistency=consistency,
         alignment=alignment,
@@ -598,16 +607,7 @@ def _build_counts(
     split: str | None,
 ) -> DatasetCounts:
     annotations_present = sum(1 for patient in patients if patient.label_path is not None)
-    annotations_required = sum(
-        1 for patient in patients if _annotation_label_required(patient, structure.task_type)
-    )
-    annotations_missing = sum(
-        1
-        for patient in patients
-        if _annotation_label_required(patient, structure.task_type)
-        and patient.label_path is None
-    )
-    annotations_not_required = len(patients) - annotations_required
+    annotations_missing = len(patients) - annotations_present
     image_files = _filter_split_items(structure.image_files, split)
     label_files = _filter_split_items(structure.label_files, split)
     image_label_pairs = _filter_split_items(structure.image_label_pairs, split)
@@ -619,8 +619,6 @@ def _build_counts(
         image_files_detected=len(image_files),
         label_files_detected=len(label_files),
         image_label_pairs_detected=len(image_label_pairs),
-        annotations_required=annotations_required,
-        annotations_not_required=annotations_not_required,
         annotations_present=annotations_present,
         annotations_missing=annotations_missing,
     )
@@ -630,12 +628,6 @@ def _filter_split_items(items: Iterable[Any], split: str | None) -> list[Any]:
     if split is None:
         return list(items)
     return [item for item in items if getattr(item, "split", None) == split]
-
-
-def _annotation_label_required(item: Any, task_type: str) -> bool:
-    if task_type == "classification":
-        return False
-    return getattr(item, "split", None) != "test"
 
 
 def _evaluate_storage(
@@ -913,16 +905,12 @@ def _evaluate_intensity(patients: list[PatientDatasetEntry]) -> IntensityEvaluat
 def _find_missing_data(
     patients: list[PatientDatasetEntry],
     failed_patients: list[FailedPatientAnalysis],
-    task_type: str,
 ) -> list[MissingDataItem]:
     missing_data: list[MissingDataItem] = []
 
     for patient in patients:
         missing_fields: list[str] = []
-        if (
-            _annotation_label_required(patient, task_type)
-            and patient.label_path is None
-        ):
+        if patient.label_path is None:
             missing_fields.append("annotation_label")
         if patient.analysis.annotation.present and patient.analysis.annotation.metadata is None:
             missing_fields.append("annotation_metadata")
@@ -1185,7 +1173,6 @@ def _build_evaluation_warnings(
 def _build_preprocessing_recommendations(
     patients: list[PatientDatasetEntry],
     failed_patients: list[FailedPatientAnalysis],
-    task_type: str,
     memory: MemoryEvaluation,
     consistency: ConsistencyEvaluation,
     alignment: LabelAlignmentEvaluation,
@@ -1203,11 +1190,7 @@ def _build_preprocessing_recommendations(
             )
         )
 
-    missing_annotations = sum(
-        1
-        for patient in patients
-        if _annotation_label_required(patient, task_type) and patient.label_path is None
-    )
+    missing_annotations = sum(1 for patient in patients if patient.label_path is None)
     if missing_annotations:
         recommendations.append(
             PreprocessingRecommendation(
@@ -1352,7 +1335,6 @@ def _build_report_preparation(
     counts: DatasetCounts,
     evaluation: DatasetEvaluation,
 ) -> ReportPreparation:
-    annotations_required_present = counts.annotations_required - counts.annotations_missing
     overview = ReportOverview(
         dataset_name=root.name,
         dataset_root=str(root),
@@ -1367,8 +1349,8 @@ def _build_report_preparation(
             counts.patients_detected,
         ),
         annotation_coverage_percentage=_percentage(
-            annotations_required_present,
-            counts.annotations_required,
+            counts.annotations_present,
+            counts.patients_analyzed,
         ),
         total_storage=evaluation.storage.total_file_size_readable,
         minimum_memory_needed=evaluation.memory.minimum_required_memory_readable,
@@ -1665,9 +1647,6 @@ def _format_summary(analysis: DatasetAnalysis) -> str:
         f"Patients analyzed: {counts.patients_analyzed}",
         f"Patients failed: {counts.patients_failed}",
         f"Patients with missing data: {len(analysis.evaluation.missing_data)}",
-        f"Annotations required: {counts.annotations_required}",
-        f"Annotations not required: {counts.annotations_not_required}",
-        f"Annotations missing: {counts.annotations_missing}",
         f"Total storage: {storage.total_file_size_readable}",
         f"- Images storage: {storage.image_file_size_readable}",
         f"- Labels storage: {storage.label_file_size_readable}",
@@ -1832,7 +1811,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--output",
         default=str(DEFAULT_OUTPUT),
-        help="JSON output path. Defaults to data\\analyse_dataset.json.",
+        help=(
+            "JSON output path. Defaults to "
+            "data/dataset_analysis/analyse_dataset.json."
+        ),
     )
     parser.add_argument(
         "--split",

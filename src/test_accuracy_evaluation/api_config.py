@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 
 
-PROJECT_DIR = Path(__file__).resolve().parents[1]
+PROJECT_DIR = Path(__file__).resolve().parents[2]
 load_dotenv(PROJECT_DIR / ".env")
 
 QWEN_BASE_URL = os.environ.get(

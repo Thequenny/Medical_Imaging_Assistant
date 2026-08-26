@@ -1,0 +1,4459 @@
+{
+  "dataset_root": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart",
+  "split_filter": "train",
+  "structure": {
+    "root": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart",
+    "task_type": "segmentation",
+    "task_reason": "dataset.json contains image/label training pairs.",
+    "training_folders": [
+      "imagesTr",
+      "labelsTr"
+    ],
+    "test_folders": [
+      "imagesTs"
+    ],
+    "classification_classes": [],
+    "image_folders": [
+      "imagesTr",
+      "imagesTs"
+    ],
+    "label_folders": [
+      "labelsTr"
+    ],
+    "unknown_folders": [],
+    "folder_summaries": [
+      {
+        "path": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "nifti_count": 20
+      },
+      {
+        "path": "imagesTs",
+        "role": "image",
+        "split": "test",
+        "nifti_count": 10
+      },
+      {
+        "path": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "nifti_count": 20
+      }
+    ],
+    "image_files": [
+      {
+        "path": "imagesTr/la_003.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_003"
+      },
+      {
+        "path": "imagesTr/la_004.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_004"
+      },
+      {
+        "path": "imagesTr/la_005.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_005"
+      },
+      {
+        "path": "imagesTr/la_007.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_007"
+      },
+      {
+        "path": "imagesTr/la_009.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_009"
+      },
+      {
+        "path": "imagesTr/la_010.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_010"
+      },
+      {
+        "path": "imagesTr/la_011.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_011"
+      },
+      {
+        "path": "imagesTr/la_014.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_014"
+      },
+      {
+        "path": "imagesTr/la_016.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_016"
+      },
+      {
+        "path": "imagesTr/la_017.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_017"
+      },
+      {
+        "path": "imagesTr/la_018.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_018"
+      },
+      {
+        "path": "imagesTr/la_019.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_019"
+      },
+      {
+        "path": "imagesTr/la_020.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_020"
+      },
+      {
+        "path": "imagesTr/la_021.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_021"
+      },
+      {
+        "path": "imagesTr/la_022.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_022"
+      },
+      {
+        "path": "imagesTr/la_023.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_023"
+      },
+      {
+        "path": "imagesTr/la_024.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_024"
+      },
+      {
+        "path": "imagesTr/la_026.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_026"
+      },
+      {
+        "path": "imagesTr/la_029.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_029"
+      },
+      {
+        "path": "imagesTr/la_030.nii.gz",
+        "folder": "imagesTr",
+        "role": "image",
+        "split": "train",
+        "subject_id": "la_030"
+      },
+      {
+        "path": "imagesTs/la_001.nii.gz",
+        "folder": "imagesTs",
+        "role": "image",
+        "split": "test",
+        "subject_id": "la_001"
+      },
+      {
+        "path": "imagesTs/la_002.nii.gz",
+        "folder": "imagesTs",
+        "role": "image",
+        "split": "test",
+        "subject_id": "la_002"
+      },
+      {
+        "path": "imagesTs/la_006.nii.gz",
+        "folder": "imagesTs",
+        "role": "image",
+        "split": "test",
+        "subject_id": "la_006"
+      },
+      {
+        "path": "imagesTs/la_008.nii.gz",
+        "folder": "imagesTs",
+        "role": "image",
+        "split": "test",
+        "subject_id": "la_008"
+      },
+      {
+        "path": "imagesTs/la_012.nii.gz",
+        "folder": "imagesTs",
+        "role": "image",
+        "split": "test",
+        "subject_id": "la_012"
+      },
+      {
+        "path": "imagesTs/la_013.nii.gz",
+        "folder": "imagesTs",
+        "role": "image",
+        "split": "test",
+        "subject_id": "la_013"
+      },
+      {
+        "path": "imagesTs/la_015.nii.gz",
+        "folder": "imagesTs",
+        "role": "image",
+        "split": "test",
+        "subject_id": "la_015"
+      },
+      {
+        "path": "imagesTs/la_025.nii.gz",
+        "folder": "imagesTs",
+        "role": "image",
+        "split": "test",
+        "subject_id": "la_025"
+      },
+      {
+        "path": "imagesTs/la_027.nii.gz",
+        "folder": "imagesTs",
+        "role": "image",
+        "split": "test",
+        "subject_id": "la_027"
+      },
+      {
+        "path": "imagesTs/la_028.nii.gz",
+        "folder": "imagesTs",
+        "role": "image",
+        "split": "test",
+        "subject_id": "la_028"
+      }
+    ],
+    "label_files": [
+      {
+        "path": "labelsTr/la_003.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_003"
+      },
+      {
+        "path": "labelsTr/la_004.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_004"
+      },
+      {
+        "path": "labelsTr/la_005.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_005"
+      },
+      {
+        "path": "labelsTr/la_007.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_007"
+      },
+      {
+        "path": "labelsTr/la_009.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_009"
+      },
+      {
+        "path": "labelsTr/la_010.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_010"
+      },
+      {
+        "path": "labelsTr/la_011.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_011"
+      },
+      {
+        "path": "labelsTr/la_014.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_014"
+      },
+      {
+        "path": "labelsTr/la_016.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_016"
+      },
+      {
+        "path": "labelsTr/la_017.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_017"
+      },
+      {
+        "path": "labelsTr/la_018.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_018"
+      },
+      {
+        "path": "labelsTr/la_019.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_019"
+      },
+      {
+        "path": "labelsTr/la_020.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_020"
+      },
+      {
+        "path": "labelsTr/la_021.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_021"
+      },
+      {
+        "path": "labelsTr/la_022.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_022"
+      },
+      {
+        "path": "labelsTr/la_023.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_023"
+      },
+      {
+        "path": "labelsTr/la_024.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_024"
+      },
+      {
+        "path": "labelsTr/la_026.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_026"
+      },
+      {
+        "path": "labelsTr/la_029.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_029"
+      },
+      {
+        "path": "labelsTr/la_030.nii.gz",
+        "folder": "labelsTr",
+        "role": "label",
+        "split": "train",
+        "subject_id": "la_030"
+      }
+    ],
+    "unknown_files": [],
+    "metadata_files": [
+      "dataset.json"
+    ],
+    "image_label_pairs": [
+      {
+        "subject_id": "la_003",
+        "image": "imagesTr/la_003.nii.gz",
+        "label": "labelsTr/la_003.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_004",
+        "image": "imagesTr/la_004.nii.gz",
+        "label": "labelsTr/la_004.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_005",
+        "image": "imagesTr/la_005.nii.gz",
+        "label": "labelsTr/la_005.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_007",
+        "image": "imagesTr/la_007.nii.gz",
+        "label": "labelsTr/la_007.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_009",
+        "image": "imagesTr/la_009.nii.gz",
+        "label": "labelsTr/la_009.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_010",
+        "image": "imagesTr/la_010.nii.gz",
+        "label": "labelsTr/la_010.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_011",
+        "image": "imagesTr/la_011.nii.gz",
+        "label": "labelsTr/la_011.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_014",
+        "image": "imagesTr/la_014.nii.gz",
+        "label": "labelsTr/la_014.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_016",
+        "image": "imagesTr/la_016.nii.gz",
+        "label": "labelsTr/la_016.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_017",
+        "image": "imagesTr/la_017.nii.gz",
+        "label": "labelsTr/la_017.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_018",
+        "image": "imagesTr/la_018.nii.gz",
+        "label": "labelsTr/la_018.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_019",
+        "image": "imagesTr/la_019.nii.gz",
+        "label": "labelsTr/la_019.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_020",
+        "image": "imagesTr/la_020.nii.gz",
+        "label": "labelsTr/la_020.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_021",
+        "image": "imagesTr/la_021.nii.gz",
+        "label": "labelsTr/la_021.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_022",
+        "image": "imagesTr/la_022.nii.gz",
+        "label": "labelsTr/la_022.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_023",
+        "image": "imagesTr/la_023.nii.gz",
+        "label": "labelsTr/la_023.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_024",
+        "image": "imagesTr/la_024.nii.gz",
+        "label": "labelsTr/la_024.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_026",
+        "image": "imagesTr/la_026.nii.gz",
+        "label": "labelsTr/la_026.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_029",
+        "image": "imagesTr/la_029.nii.gz",
+        "label": "labelsTr/la_029.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      },
+      {
+        "subject_id": "la_030",
+        "image": "imagesTr/la_030.nii.gz",
+        "label": "labelsTr/la_030.nii.gz",
+        "split": "train",
+        "source": "dataset.json"
+      }
+    ],
+    "unmatched_images": [],
+    "unmatched_labels": [],
+    "warnings": []
+  },
+  "counts": {
+    "patients_detected": 20,
+    "patients_analyzed": 20,
+    "patients_failed": 0,
+    "image_files_detected": 20,
+    "label_files_detected": 20,
+    "image_label_pairs_detected": 20,
+    "annotations_present": 20,
+    "annotations_missing": 0
+  },
+  "patients": [
+    {
+      "subject_id": "la_003",
+      "split": "train",
+      "image_path": "imagesTr/la_003.nii.gz",
+      "label_path": "labelsTr/la_003.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_003",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_003.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              130
+            ],
+            "number_of_slices": 130,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 13312000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              178.1000006198883
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 14914026,
+              "native_array_bytes": 53248000,
+              "float32_array_bytes": 53248000,
+              "float64_array_bytes": 106496000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 1999.0,
+            "mean": 172.74059968449518,
+            "std": 263.33504373492934,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 47.0,
+              "p75": 247.0,
+              "p95": 781.0,
+              "p99": 1152.0,
+              "p99_5": 1246.0
+            },
+            "finite_voxel_count": 13312000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_003.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_003.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              130
+            ],
+            "number_of_slices": 130,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 13312000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              178.1000006198883
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 19662,
+              "native_array_bytes": 13312000,
+              "float32_array_bytes": 53248000,
+              "float64_array_bytes": 106496000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_004",
+      "split": "train",
+      "image_path": "imagesTr/la_004.nii.gz",
+      "label_path": "labelsTr/la_004.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_004",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_004.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              110
+            ],
+            "number_of_slices": 110,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 11264000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              150.70000052452087
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 12341450,
+              "native_array_bytes": 45056000,
+              "float32_array_bytes": 45056000,
+              "float64_array_bytes": 90112000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 1811.0,
+            "mean": 140.07046031605114,
+            "std": 232.39553914260077,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 26.0,
+              "p75": 183.0,
+              "p95": 661.0,
+              "p99": 1086.0,
+              "p99_5": 1159.0
+            },
+            "finite_voxel_count": 11264000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_004.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_004.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              110
+            ],
+            "number_of_slices": 110,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 11264000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              150.70000052452087
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 18597,
+              "native_array_bytes": 11264000,
+              "float32_array_bytes": 45056000,
+              "float64_array_bytes": 90112000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_005",
+      "split": "train",
+      "image_path": "imagesTr/la_005.nii.gz",
+      "label_path": "labelsTr/la_005.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_005",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_005.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              120
+            ],
+            "number_of_slices": 120,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12288000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              164.4000005722046
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 13909546,
+              "native_array_bytes": 49152000,
+              "float32_array_bytes": 49152000,
+              "float64_array_bytes": 98304000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 1888.0,
+            "mean": 159.12789624023438,
+            "std": 235.90045617006845,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 48.0,
+              "p75": 228.0,
+              "p95": 712.0,
+              "p99": 989.0,
+              "p99_5": 1077.0
+            },
+            "finite_voxel_count": 12288000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_005.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_005.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              120
+            ],
+            "number_of_slices": 120,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12288000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              164.4000005722046
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 19559,
+              "native_array_bytes": 12288000,
+              "float32_array_bytes": 49152000,
+              "float64_array_bytes": 98304000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_007",
+      "split": "train",
+      "image_path": "imagesTr/la_007.nii.gz",
+      "label_path": "labelsTr/la_007.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_007",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_007.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              130
+            ],
+            "number_of_slices": 130,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 13312000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              178.1000006198883
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 15468510,
+              "native_array_bytes": 53248000,
+              "float32_array_bytes": 53248000,
+              "float64_array_bytes": 106496000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 1873.0,
+            "mean": 179.2597119891827,
+            "std": 239.43202586196895,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 98.0,
+              "p75": 261.0,
+              "p95": 696.0,
+              "p99": 1089.0,
+              "p99_5": 1160.0
+            },
+            "finite_voxel_count": 13312000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_007.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_007.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              130
+            ],
+            "number_of_slices": 130,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 13312000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              178.1000006198883
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 20502,
+              "native_array_bytes": 13312000,
+              "float32_array_bytes": 53248000,
+              "float64_array_bytes": 106496000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_009",
+      "split": "train",
+      "image_path": "imagesTr/la_009.nii.gz",
+      "label_path": "labelsTr/la_009.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_009",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_009.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              100
+            ],
+            "number_of_slices": 100,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 10240000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              137.00000047683716
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 11266306,
+              "native_array_bytes": 40960000,
+              "float32_array_bytes": 40960000,
+              "float64_array_bytes": 81920000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 2171.0,
+            "mean": 163.31668037109375,
+            "std": 262.18883991084834,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 34.0,
+              "p75": 221.0,
+              "p95": 783.0,
+              "p99": 1158.0,
+              "p99_5": 1234.0
+            },
+            "finite_voxel_count": 10240000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_009.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_009.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              100
+            ],
+            "number_of_slices": 100,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 10240000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              137.00000047683716
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 17040,
+              "native_array_bytes": 10240000,
+              "float32_array_bytes": 40960000,
+              "float64_array_bytes": 81920000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_010",
+      "split": "train",
+      "image_path": "imagesTr/la_010.nii.gz",
+      "label_path": "labelsTr/la_010.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_010",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_010.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              120
+            ],
+            "number_of_slices": 120,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12288000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              164.4000005722046
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 13957912,
+              "native_array_bytes": 49152000,
+              "float32_array_bytes": 49152000,
+              "float64_array_bytes": 98304000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 1907.0,
+            "mean": 167.14945483398438,
+            "std": 255.80392982373994,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 41.0,
+              "p75": 232.0,
+              "p95": 762.0,
+              "p99": 1109.0,
+              "p99_5": 1174.0
+            },
+            "finite_voxel_count": 12288000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_010.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_010.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              120
+            ],
+            "number_of_slices": 120,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12288000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              164.4000005722046
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 17715,
+              "native_array_bytes": 12288000,
+              "float32_array_bytes": 49152000,
+              "float64_array_bytes": 98304000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_011",
+      "split": "train",
+      "image_path": "imagesTr/la_011.nii.gz",
+      "label_path": "labelsTr/la_011.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_011",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_011.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              120
+            ],
+            "number_of_slices": 120,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12288000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              164.4000005722046
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 13892390,
+              "native_array_bytes": 49152000,
+              "float32_array_bytes": 49152000,
+              "float64_array_bytes": 98304000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 1979.0,
+            "mean": 194.07749674479166,
+            "std": 279.26907586528745,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 66.0,
+              "p75": 290.0,
+              "p95": 849.0,
+              "p99": 1183.0,
+              "p99_5": 1258.0
+            },
+            "finite_voxel_count": 12288000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_011.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_011.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              120
+            ],
+            "number_of_slices": 120,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12288000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              164.4000005722046
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 19343,
+              "native_array_bytes": 12288000,
+              "float32_array_bytes": 49152000,
+              "float64_array_bytes": 98304000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_014",
+      "split": "train",
+      "image_path": "imagesTr/la_014.nii.gz",
+      "label_path": "labelsTr/la_014.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_014",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_014.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              120
+            ],
+            "number_of_slices": 120,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12288000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              164.4000005722046
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 15509650,
+              "native_array_bytes": 49152000,
+              "float32_array_bytes": 49152000,
+              "float64_array_bytes": 98304000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 2058.0,
+            "mean": 209.76557503255208,
+            "std": 274.1883272591825,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 124.0,
+              "p75": 291.0,
+              "p95": 836.0,
+              "p99": 1222.0,
+              "p99_5": 1289.0
+            },
+            "finite_voxel_count": 12288000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_014.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_014.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              120
+            ],
+            "number_of_slices": 120,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12288000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              164.4000005722046
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 19143,
+              "native_array_bytes": 12288000,
+              "float32_array_bytes": 49152000,
+              "float64_array_bytes": 98304000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_016",
+      "split": "train",
+      "image_path": "imagesTr/la_016.nii.gz",
+      "label_path": "labelsTr/la_016.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_016",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_016.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              90
+            ],
+            "number_of_slices": 90,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 9216000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              123.30000042915344
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 9021827,
+              "native_array_bytes": 36864000,
+              "float32_array_bytes": 36864000,
+              "float64_array_bytes": 73728000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 2017.0,
+            "mean": 167.15110731336804,
+            "std": 269.74928292365394,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 15.0,
+              "p75": 234.0,
+              "p95": 818.0,
+              "p99": 1137.0,
+              "p99_5": 1201.0
+            },
+            "finite_voxel_count": 9216000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_016.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_016.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              90
+            ],
+            "number_of_slices": 90,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 9216000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              123.30000042915344
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 15521,
+              "native_array_bytes": 9216000,
+              "float32_array_bytes": 36864000,
+              "float64_array_bytes": 73728000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_017",
+      "split": "train",
+      "image_path": "imagesTr/la_017.nii.gz",
+      "label_path": "labelsTr/la_017.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_017",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_017.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              120
+            ],
+            "number_of_slices": 120,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12288000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              164.4000005722046
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 13953197,
+              "native_array_bytes": 49152000,
+              "float32_array_bytes": 49152000,
+              "float64_array_bytes": 98304000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 1937.0,
+            "mean": 180.03705745442707,
+            "std": 262.28549476467833,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 83.0,
+              "p75": 250.0,
+              "p95": 790.0,
+              "p99": 1180.0,
+              "p99_5": 1255.0
+            },
+            "finite_voxel_count": 12288000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_017.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_017.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              120
+            ],
+            "number_of_slices": 120,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12288000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              164.4000005722046
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 17549,
+              "native_array_bytes": 12288000,
+              "float32_array_bytes": 49152000,
+              "float64_array_bytes": 98304000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_018",
+      "split": "train",
+      "image_path": "imagesTr/la_018.nii.gz",
+      "label_path": "labelsTr/la_018.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_018",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_018.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              122
+            ],
+            "number_of_slices": 122,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12492800,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              167.14000058174133
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 13421517,
+              "native_array_bytes": 49971200,
+              "float32_array_bytes": 49971200,
+              "float64_array_bytes": 99942400
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 2095.0,
+            "mean": 148.40037389536374,
+            "std": 233.9974791406457,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 17.0,
+              "p75": 239.0,
+              "p95": 645.0,
+              "p99": 1077.0,
+              "p99_5": 1166.0
+            },
+            "finite_voxel_count": 12492800,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_018.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_018.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              122
+            ],
+            "number_of_slices": 122,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12492800,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              167.14000058174133
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 18567,
+              "native_array_bytes": 12492800,
+              "float32_array_bytes": 49971200,
+              "float64_array_bytes": 99942400
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_019",
+      "split": "train",
+      "image_path": "imagesTr/la_019.nii.gz",
+      "label_path": "labelsTr/la_019.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_019",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_019.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              100
+            ],
+            "number_of_slices": 100,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 10240000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              137.00000047683716
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 10917661,
+              "native_array_bytes": 40960000,
+              "float32_array_bytes": 40960000,
+              "float64_array_bytes": 81920000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 1662.0,
+            "mean": 160.07197021484376,
+            "std": 243.21730541913908,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 28.0,
+              "p75": 242.0,
+              "p95": 742.0,
+              "p99": 1026.0,
+              "p99_5": 1097.0
+            },
+            "finite_voxel_count": 10240000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_019.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_019.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              100
+            ],
+            "number_of_slices": 100,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 10240000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              137.00000047683716
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 17474,
+              "native_array_bytes": 10240000,
+              "float32_array_bytes": 40960000,
+              "float64_array_bytes": 81920000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_020",
+      "split": "train",
+      "image_path": "imagesTr/la_020.nii.gz",
+      "label_path": "labelsTr/la_020.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_020",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_020.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              110
+            ],
+            "number_of_slices": 110,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 11264000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              150.70000052452087
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 11430083,
+              "native_array_bytes": 45056000,
+              "float32_array_bytes": 45056000,
+              "float64_array_bytes": 90112000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 2005.0,
+            "mean": 147.91177876420454,
+            "std": 244.34587054403278,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 17.0,
+              "p75": 205.0,
+              "p95": 694.0,
+              "p99": 1101.0,
+              "p99_5": 1172.0
+            },
+            "finite_voxel_count": 11264000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_020.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_020.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              110
+            ],
+            "number_of_slices": 110,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 11264000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              150.70000052452087
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 16244,
+              "native_array_bytes": 11264000,
+              "float32_array_bytes": 45056000,
+              "float64_array_bytes": 90112000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_021",
+      "split": "train",
+      "image_path": "imagesTr/la_021.nii.gz",
+      "label_path": "labelsTr/la_021.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_021",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_021.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              100
+            ],
+            "number_of_slices": 100,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 10240000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              137.00000047683716
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 11672526,
+              "native_array_bytes": 40960000,
+              "float32_array_bytes": 40960000,
+              "float64_array_bytes": 81920000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 1852.0,
+            "mean": 198.3616427734375,
+            "std": 274.74521475027785,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 83.0,
+              "p75": 301.0,
+              "p95": 815.0,
+              "p99": 1171.0,
+              "p99_5": 1238.0
+            },
+            "finite_voxel_count": 10240000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_021.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_021.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              100
+            ],
+            "number_of_slices": 100,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 10240000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              137.00000047683716
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 15942,
+              "native_array_bytes": 10240000,
+              "float32_array_bytes": 40960000,
+              "float64_array_bytes": 81920000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_022",
+      "split": "train",
+      "image_path": "imagesTr/la_022.nii.gz",
+      "label_path": "labelsTr/la_022.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_022",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_022.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              110
+            ],
+            "number_of_slices": 110,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 11264000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              150.70000052452087
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 12547674,
+              "native_array_bytes": 45056000,
+              "float32_array_bytes": 45056000,
+              "float64_array_bytes": 90112000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 1901.0,
+            "mean": 151.74326606889204,
+            "std": 238.76182532231425,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 36.0,
+              "p75": 207.0,
+              "p95": 699.0,
+              "p99": 1085.0,
+              "p99_5": 1166.0
+            },
+            "finite_voxel_count": 11264000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_022.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_022.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              110
+            ],
+            "number_of_slices": 110,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 11264000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              150.70000052452087
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 16076,
+              "native_array_bytes": 11264000,
+              "float32_array_bytes": 45056000,
+              "float64_array_bytes": 90112000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_023",
+      "split": "train",
+      "image_path": "imagesTr/la_023.nii.gz",
+      "label_path": "labelsTr/la_023.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_023",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_023.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              110
+            ],
+            "number_of_slices": 110,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 11264000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              150.70000052452087
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 13117432,
+              "native_array_bytes": 45056000,
+              "float32_array_bytes": 45056000,
+              "float64_array_bytes": 90112000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 1999.0,
+            "mean": 174.2089374112216,
+            "std": 254.97960077177862,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 67.0,
+              "p75": 248.0,
+              "p95": 741.0,
+              "p99": 1151.0,
+              "p99_5": 1248.0
+            },
+            "finite_voxel_count": 11264000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_023.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_023.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              110
+            ],
+            "number_of_slices": 110,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 11264000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              150.70000052452087
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 16530,
+              "native_array_bytes": 11264000,
+              "float32_array_bytes": 45056000,
+              "float64_array_bytes": 90112000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_024",
+      "split": "train",
+      "image_path": "imagesTr/la_024.nii.gz",
+      "label_path": "labelsTr/la_024.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_024",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_024.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              120
+            ],
+            "number_of_slices": 120,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12288000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              164.4000005722046
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 13727279,
+              "native_array_bytes": 49152000,
+              "float32_array_bytes": 49152000,
+              "float64_array_bytes": 98304000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 2060.0,
+            "mean": 164.1791376953125,
+            "std": 266.0916436851186,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 37.0,
+              "p75": 222.0,
+              "p95": 769.0,
+              "p99": 1228.0,
+              "p99_5": 1300.0
+            },
+            "finite_voxel_count": 12288000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_024.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_024.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              120
+            ],
+            "number_of_slices": 120,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12288000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              164.4000005722046
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 18713,
+              "native_array_bytes": 12288000,
+              "float32_array_bytes": 49152000,
+              "float64_array_bytes": 98304000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_026",
+      "split": "train",
+      "image_path": "imagesTr/la_026.nii.gz",
+      "label_path": "labelsTr/la_026.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_026",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_026.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              120
+            ],
+            "number_of_slices": 120,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12288000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              164.4000005722046
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 13909546,
+              "native_array_bytes": 49152000,
+              "float32_array_bytes": 49152000,
+              "float64_array_bytes": 98304000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 1888.0,
+            "mean": 159.12789624023438,
+            "std": 235.90045617006845,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 48.0,
+              "p75": 228.0,
+              "p95": 712.0,
+              "p99": 989.0,
+              "p99_5": 1077.0
+            },
+            "finite_voxel_count": 12288000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_026.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_026.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              120
+            ],
+            "number_of_slices": 120,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 12288000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              164.4000005722046
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 19191,
+              "native_array_bytes": 12288000,
+              "float32_array_bytes": 49152000,
+              "float64_array_bytes": 98304000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_029",
+      "split": "train",
+      "image_path": "imagesTr/la_029.nii.gz",
+      "label_path": "labelsTr/la_029.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_029",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_029.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              109
+            ],
+            "number_of_slices": 109,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 11161600,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              149.3300005197525
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 13163134,
+              "native_array_bytes": 44646400,
+              "float32_array_bytes": 44646400,
+              "float64_array_bytes": 89292800
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 2196.0,
+            "mean": 206.43646143922018,
+            "std": 302.3749726504208,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 67.0,
+              "p75": 303.0,
+              "p95": 863.0,
+              "p99": 1337.0,
+              "p99_5": 1430.0
+            },
+            "finite_voxel_count": 11161600,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_029.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_029.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              109
+            ],
+            "number_of_slices": 109,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 11161600,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              149.3300005197525
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 16095,
+              "native_array_bytes": 11161600,
+              "float32_array_bytes": 44646400,
+              "float64_array_bytes": 89292800
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    },
+    {
+      "subject_id": "la_030",
+      "split": "train",
+      "image_path": "imagesTr/la_030.nii.gz",
+      "label_path": "labelsTr/la_030.nii.gz",
+      "source": "dataset.json",
+      "analysis": {
+        "patient_id": "la_030",
+        "image": {
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/imagesTr/la_030.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              110
+            ],
+            "number_of_slices": 110,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "float32",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 11264000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              150.70000052452087
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 12222499,
+              "native_array_bytes": 45056000,
+              "float32_array_bytes": 45056000,
+              "float64_array_bytes": 90112000
+            }
+          },
+          "intensity": {
+            "min": 0.0,
+            "max": 2045.0,
+            "mean": 159.32914302201704,
+            "std": 268.7302646685002,
+            "percentiles": {
+              "p0_5": 0.0,
+              "p1": 0.0,
+              "p5": 0.0,
+              "p25": 0.0,
+              "p50": 22.0,
+              "p75": 210.0,
+              "p95": 752.0,
+              "p99": 1263.0,
+              "p99_5": 1326.0
+            },
+            "finite_voxel_count": 11264000,
+            "non_finite_voxel_count": 0
+          }
+        },
+        "annotation": {
+          "present": true,
+          "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_030.nii.gz",
+          "metadata": {
+            "path": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart/labelsTr/la_030.nii.gz",
+            "dimensions": [
+              320,
+              320,
+              110
+            ],
+            "number_of_slices": 110,
+            "slice_thickness": 1.3700000047683716,
+            "voxel_spacing": [
+              1.25,
+              1.25,
+              1.3700000047683716
+            ],
+            "orientation": [
+              "R",
+              "A",
+              "S"
+            ],
+            "datatype": "uint8",
+            "affine": [
+              [
+                1.25,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.25,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.3700000047683716,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "voxel_count": 11264000,
+            "physical_voxel_size_mm3": 2.1406250074505806,
+            "physical_size_mm": [
+              400.0,
+              400.0,
+              150.70000052452087
+            ],
+            "memory_estimate": {
+              "file_size_bytes": 17839,
+              "native_array_bytes": 11264000,
+              "float32_array_bytes": 45056000,
+              "float64_array_bytes": 90112000
+            }
+          },
+          "message": "Annotation label is present."
+        }
+      }
+    }
+  ],
+  "failed_patients": [],
+  "evaluation": {
+    "storage": {
+      "total_file_size_bytes": 260721467,
+      "total_file_size_readable": "260.72 MB",
+      "image_file_size_bytes": 260364165,
+      "image_file_size_readable": "260.36 MB",
+      "label_file_size_bytes": 357302,
+      "label_file_size_readable": "357.30 KB",
+      "image_file_size_summary_bytes": {
+        "count": 20,
+        "total": 260364165.0,
+        "total_readable": "260.36 MB",
+        "min": 9021827.0,
+        "min_readable": "9.02 MB",
+        "max": 15509650.0,
+        "max_readable": "15.51 MB",
+        "mean": 13018208.25,
+        "mean_readable": "13.02 MB",
+        "median": 13292325.5,
+        "median_readable": "13.29 MB"
+      },
+      "label_file_size_summary_bytes": {
+        "count": 20,
+        "total": 357302.0,
+        "total_readable": "357.30 KB",
+        "min": 15521.0,
+        "min_readable": "15.52 KB",
+        "max": 20502.0,
+        "max_readable": "20.50 KB",
+        "mean": 17865.1,
+        "mean_readable": "17.87 KB",
+        "median": 17777.0,
+        "median_readable": "17.78 KB"
+      }
+    },
+    "memory": {
+      "minimum_required_memory_bytes": 53248000,
+      "minimum_required_memory_readable": "53.25 MB",
+      "minimum_required_memory_basis": "Largest image loaded as float32, which is how analyze_nifti_volume reads CT voxel data.",
+      "native_array_bytes": {
+        "count": 20,
+        "total": 930201600.0,
+        "total_readable": "930.20 MB",
+        "min": 36864000.0,
+        "min_readable": "36.86 MB",
+        "max": 53248000.0,
+        "max_readable": "53.25 MB",
+        "mean": 46510080.0,
+        "mean_readable": "46.51 MB",
+        "median": 47104000.0,
+        "median_readable": "47.10 MB"
+      },
+      "float32_array_bytes": {
+        "count": 20,
+        "total": 930201600.0,
+        "total_readable": "930.20 MB",
+        "min": 36864000.0,
+        "min_readable": "36.86 MB",
+        "max": 53248000.0,
+        "max_readable": "53.25 MB",
+        "mean": 46510080.0,
+        "mean_readable": "46.51 MB",
+        "median": 47104000.0,
+        "median_readable": "47.10 MB"
+      },
+      "float64_array_bytes": {
+        "count": 20,
+        "total": 1860403200.0,
+        "total_readable": "1.86 GB",
+        "min": 73728000.0,
+        "min_readable": "73.73 MB",
+        "max": 106496000.0,
+        "max_readable": "106.50 MB",
+        "mean": 93020160.0,
+        "mean_readable": "93.02 MB",
+        "median": 94208000.0,
+        "median_readable": "94.21 MB"
+      },
+      "largest_native_volume_bytes": 53248000,
+      "largest_native_volume_readable": "53.25 MB",
+      "largest_float32_volume_bytes": 53248000,
+      "largest_float32_volume_readable": "53.25 MB",
+      "largest_float64_volume_bytes": 106496000,
+      "largest_float64_volume_readable": "106.50 MB"
+    },
+    "consistency": {
+      "most_common_orientation": [
+        "R",
+        "A",
+        "S"
+      ],
+      "percentage_same_orientation": 100.0,
+      "orientation_frequencies": [
+        {
+          "value": [
+            "R",
+            "A",
+            "S"
+          ],
+          "display_value": "R x A x S",
+          "count": 20,
+          "percentage": 100.0
+        }
+      ],
+      "most_common_dimensionality": "3D",
+      "dimensionality_frequencies": [
+        {
+          "value": "3D",
+          "display_value": "3D",
+          "count": 20,
+          "percentage": 100.0
+        }
+      ],
+      "most_common_slice_count": 120,
+      "percentage_same_slice_count": 35.0,
+      "slice_count_frequencies": [
+        {
+          "value": 120,
+          "display_value": "120",
+          "count": 7,
+          "percentage": 35.0
+        },
+        {
+          "value": 110,
+          "display_value": "110",
+          "count": 5,
+          "percentage": 25.0
+        },
+        {
+          "value": 100,
+          "display_value": "100",
+          "count": 3,
+          "percentage": 15.0
+        },
+        {
+          "value": 130,
+          "display_value": "130",
+          "count": 2,
+          "percentage": 10.0
+        },
+        {
+          "value": 109,
+          "display_value": "109",
+          "count": 1,
+          "percentage": 5.0
+        },
+        {
+          "value": 122,
+          "display_value": "122",
+          "count": 1,
+          "percentage": 5.0
+        },
+        {
+          "value": 90,
+          "display_value": "90",
+          "count": 1,
+          "percentage": 5.0
+        }
+      ],
+      "most_common_slice_count_and_thickness": [
+        120,
+        1.37
+      ],
+      "slice_count_thickness_frequencies": [
+        {
+          "value": [
+            120,
+            1.37
+          ],
+          "display_value": "120 x 1.37",
+          "count": 7,
+          "percentage": 35.0
+        },
+        {
+          "value": [
+            110,
+            1.37
+          ],
+          "display_value": "110 x 1.37",
+          "count": 5,
+          "percentage": 25.0
+        },
+        {
+          "value": [
+            100,
+            1.37
+          ],
+          "display_value": "100 x 1.37",
+          "count": 3,
+          "percentage": 15.0
+        },
+        {
+          "value": [
+            130,
+            1.37
+          ],
+          "display_value": "130 x 1.37",
+          "count": 2,
+          "percentage": 10.0
+        },
+        {
+          "value": [
+            109,
+            1.37
+          ],
+          "display_value": "109 x 1.37",
+          "count": 1,
+          "percentage": 5.0
+        },
+        {
+          "value": [
+            122,
+            1.37
+          ],
+          "display_value": "122 x 1.37",
+          "count": 1,
+          "percentage": 5.0
+        },
+        {
+          "value": [
+            90,
+            1.37
+          ],
+          "display_value": "90 x 1.37",
+          "count": 1,
+          "percentage": 5.0
+        }
+      ],
+      "most_common_in_plane_resolution": [
+        1.25,
+        1.25
+      ],
+      "percentage_same_resolution": 100.0,
+      "in_plane_resolution_frequencies": [
+        {
+          "value": [
+            1.25,
+            1.25
+          ],
+          "display_value": "1.25 x 1.25",
+          "count": 20,
+          "percentage": 100.0
+        }
+      ],
+      "most_common_slice_thickness": 1.37,
+      "percentage_same_thickness": 100.0,
+      "slice_thickness_frequencies": [
+        {
+          "thickness_mm": 1.37,
+          "count": 20,
+          "percentage": 100.0
+        }
+      ],
+      "most_common_voxel_spacing": [
+        1.25,
+        1.25,
+        1.37
+      ],
+      "percentage_same_voxel_spacing": 100.0,
+      "percentage_different_voxel_spacing": 0.0,
+      "voxel_spacing_frequencies": [
+        {
+          "value": [
+            1.25,
+            1.25,
+            1.37
+          ],
+          "display_value": "1.25 x 1.25 x 1.37",
+          "count": 20,
+          "percentage": 100.0
+        }
+      ],
+      "voxel_volume_mm3_summary": {
+        "count": 20,
+        "total": 42.81250014901161,
+        "min": 2.1406250074505806,
+        "max": 2.1406250074505806,
+        "mean": 2.1406250074505806,
+        "median": 2.1406250074505806
+      },
+      "physical_size_frequencies": [
+        {
+          "value": [
+            400.0,
+            400.0,
+            164.4
+          ],
+          "display_value": "400 x 400 x 164.4",
+          "count": 7,
+          "percentage": 35.0
+        },
+        {
+          "value": [
+            400.0,
+            400.0,
+            150.7
+          ],
+          "display_value": "400 x 400 x 150.7",
+          "count": 5,
+          "percentage": 25.0
+        },
+        {
+          "value": [
+            400.0,
+            400.0,
+            137.0
+          ],
+          "display_value": "400 x 400 x 137",
+          "count": 3,
+          "percentage": 15.0
+        },
+        {
+          "value": [
+            400.0,
+            400.0,
+            178.1
+          ],
+          "display_value": "400 x 400 x 178.1",
+          "count": 2,
+          "percentage": 10.0
+        },
+        {
+          "value": [
+            400.0,
+            400.0,
+            123.3
+          ],
+          "display_value": "400 x 400 x 123.3",
+          "count": 1,
+          "percentage": 5.0
+        },
+        {
+          "value": [
+            400.0,
+            400.0,
+            149.33
+          ],
+          "display_value": "400 x 400 x 149.33",
+          "count": 1,
+          "percentage": 5.0
+        },
+        {
+          "value": [
+            400.0,
+            400.0,
+            167.14
+          ],
+          "display_value": "400 x 400 x 167.14",
+          "count": 1,
+          "percentage": 5.0
+        }
+      ],
+      "most_common_dimensions": [
+        320,
+        320,
+        120
+      ],
+      "percentage_same_dimensions": 35.0,
+      "dimensions_are_consistent": false,
+      "dimension_frequencies": [
+        {
+          "value": [
+            320,
+            320,
+            120
+          ],
+          "display_value": "320 x 320 x 120",
+          "count": 7,
+          "percentage": 35.0
+        },
+        {
+          "value": [
+            320,
+            320,
+            110
+          ],
+          "display_value": "320 x 320 x 110",
+          "count": 5,
+          "percentage": 25.0
+        },
+        {
+          "value": [
+            320,
+            320,
+            100
+          ],
+          "display_value": "320 x 320 x 100",
+          "count": 3,
+          "percentage": 15.0
+        },
+        {
+          "value": [
+            320,
+            320,
+            130
+          ],
+          "display_value": "320 x 320 x 130",
+          "count": 2,
+          "percentage": 10.0
+        },
+        {
+          "value": [
+            320,
+            320,
+            109
+          ],
+          "display_value": "320 x 320 x 109",
+          "count": 1,
+          "percentage": 5.0
+        },
+        {
+          "value": [
+            320,
+            320,
+            122
+          ],
+          "display_value": "320 x 320 x 122",
+          "count": 1,
+          "percentage": 5.0
+        },
+        {
+          "value": [
+            320,
+            320,
+            90
+          ],
+          "display_value": "320 x 320 x 90",
+          "count": 1,
+          "percentage": 5.0
+        }
+      ]
+    },
+    "alignment": {
+      "checked_pairs": 20,
+      "aligned_pairs": 20,
+      "misaligned_pairs": 0,
+      "alignment_percentage": 100.0,
+      "misaligned_patients": [],
+      "explanation": "Image and label are considered aligned when dimensions, voxel spacing, orientation, and affine matrix match within a small numerical tolerance."
+    },
+    "intensity": {
+      "global_min": 0.0,
+      "global_max": 2196.0,
+      "patient_min_summary": {
+        "count": 20,
+        "total": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0
+      },
+      "patient_max_summary": {
+        "count": 20,
+        "total": 39343.0,
+        "min": 1662.0,
+        "max": 2196.0,
+        "mean": 1967.15,
+        "median": 1989.0
+      },
+      "patient_mean_summary": {
+        "count": 20,
+        "total": 3402.4666475049276,
+        "min": 140.07046031605114,
+        "max": 209.76557503255208,
+        "mean": 170.12333237524638,
+        "median": 165.66429626464844
+      },
+      "patient_std_summary": {
+        "count": 20,
+        "total": 5137.692648579255,
+        "min": 232.39553914260077,
+        "max": 302.3749726504208,
+        "mean": 256.88463242896273,
+        "median": 258.9963848672941
+      },
+      "patient_intensity_statistics_table": [
+        {
+          "statistic": "Minimum intensity",
+          "unit": "HU",
+          "count": 20,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "median": 0.0
+        },
+        {
+          "statistic": "Maximum intensity",
+          "unit": "HU",
+          "count": 20,
+          "min": 1662.0,
+          "max": 2196.0,
+          "mean": 1967.15,
+          "median": 1989.0
+        },
+        {
+          "statistic": "Mean intensity",
+          "unit": "HU",
+          "count": 20,
+          "min": 140.07046031605114,
+          "max": 209.76557503255208,
+          "mean": 170.12333237524638,
+          "median": 165.66429626464844
+        },
+        {
+          "statistic": "Standard deviation",
+          "unit": "HU",
+          "count": 20,
+          "min": 232.39553914260077,
+          "max": 302.3749726504208,
+          "mean": 256.88463242896273,
+          "median": 258.9963848672941
+        }
+      ],
+      "patient_percentile_summaries": {
+        "p0_5": {
+          "count": 20,
+          "total": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "median": 0.0
+        },
+        "p1": {
+          "count": 20,
+          "total": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "median": 0.0
+        },
+        "p25": {
+          "count": 20,
+          "total": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "median": 0.0
+        },
+        "p5": {
+          "count": 20,
+          "total": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "median": 0.0
+        },
+        "p50": {
+          "count": 20,
+          "total": 1004.0,
+          "min": 15.0,
+          "max": 124.0,
+          "mean": 50.2,
+          "median": 44.0
+        },
+        "p75": {
+          "count": 20,
+          "total": 4842.0,
+          "min": 183.0,
+          "max": 303.0,
+          "mean": 242.1,
+          "median": 236.5
+        },
+        "p95": {
+          "count": 20,
+          "total": 15120.0,
+          "min": 645.0,
+          "max": 863.0,
+          "mean": 756.0,
+          "median": 757.0
+        },
+        "p99": {
+          "count": 20,
+          "total": 22733.0,
+          "min": 989.0,
+          "max": 1337.0,
+          "mean": 1136.65,
+          "median": 1144.0
+        },
+        "p99_5": {
+          "count": 20,
+          "total": 24273.0,
+          "min": 1077.0,
+          "max": 1430.0,
+          "mean": 1213.65,
+          "median": 1217.5
+        }
+      },
+      "patient_percentile_table": [
+        {
+          "percentile": "P0.5",
+          "count": 20,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "median": 0.0
+        },
+        {
+          "percentile": "P1",
+          "count": 20,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "median": 0.0
+        },
+        {
+          "percentile": "P5",
+          "count": 20,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "median": 0.0
+        },
+        {
+          "percentile": "P25",
+          "count": 20,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "median": 0.0
+        },
+        {
+          "percentile": "P50",
+          "count": 20,
+          "min": 15.0,
+          "max": 124.0,
+          "mean": 50.2,
+          "median": 44.0
+        },
+        {
+          "percentile": "P75",
+          "count": 20,
+          "min": 183.0,
+          "max": 303.0,
+          "mean": 242.1,
+          "median": 236.5
+        },
+        {
+          "percentile": "P95",
+          "count": 20,
+          "min": 645.0,
+          "max": 863.0,
+          "mean": 756.0,
+          "median": 757.0
+        },
+        {
+          "percentile": "P99",
+          "count": 20,
+          "min": 989.0,
+          "max": 1337.0,
+          "mean": 1136.65,
+          "median": 1144.0
+        },
+        {
+          "percentile": "P99.5",
+          "count": 20,
+          "min": 1077.0,
+          "max": 1430.0,
+          "mean": 1213.65,
+          "median": 1217.5
+        }
+      ],
+      "voxel_validity": {
+        "total_voxels": 232550400,
+        "total_voxels_readable": "232,550,400 voxels",
+        "valid_voxels": 232550400,
+        "valid_voxels_readable": "232,550,400 voxels",
+        "valid_voxel_percentage": 100.0,
+        "non_finite_voxels": 0,
+        "non_finite_voxels_readable": "0 voxels",
+        "non_finite_voxel_percentage": 0.0,
+        "explanation": "Finite voxels are valid numeric CT intensity values. Non-finite voxels are NaN or infinite values that should be cleaned before training."
+      },
+      "intensity_scale": {
+        "raw_hu_like_patient_count": 20,
+        "normalized_patient_count": 0,
+        "unknown_patient_count": 0,
+        "normalized_patient_ids": [],
+        "normalized_patients": [],
+        "unknown_patients": [],
+        "explanation": "This is a heuristic check. Raw CT is expected to look compatible with Hounsfield units. Volumes close to 0..1, -1..1, or centered around 0 with standard deviation near 1 are reported as suspected normalized."
+      },
+      "finite_voxel_count": 232550400,
+      "non_finite_voxel_count": 0,
+      "non_finite_voxel_percentage": 0.0
+    },
+    "missing_data": [],
+    "warnings": [
+      "Volume dimensions are not consistent across CT images."
+    ],
+    "preprocessing_recommendations": [
+      {
+        "category": "shape_standardization",
+        "severity": "medium",
+        "message": "Crop, pad, resize, or patch volumes to a consistent training shape.",
+        "reason": "Volume dimensions differ; the most common dimensions cover 35.0% of patients."
+      },
+      {
+        "category": "intensity_normalization",
+        "severity": "medium",
+        "message": "Apply CT intensity clipping and normalization before model training.",
+        "reason": "CT images are commonly normalized to reduce scanner and protocol differences."
+      },
+      {
+        "category": "memory",
+        "severity": "info",
+        "message": "Plan at least the estimated minimum memory per loaded CT volume, plus overhead for batching and preprocessing.",
+        "reason": "Estimated minimum memory for this analyzer is 53.25 MB."
+      }
+    ]
+  },
+  "report_preparation": {
+    "overview": {
+      "dataset_name": "Task02_Heart",
+      "dataset_root": "/home/bernys/Desktop/LLM_project/dataset/Task02_Heart",
+      "split_filter": "train",
+      "task_type": "segmentation",
+      "task_reason": "dataset.json contains image/label training pairs.",
+      "patients_detected": 20,
+      "patients_analyzed": 20,
+      "patients_failed": 0,
+      "analysis_success_percentage": 100.0,
+      "annotation_coverage_percentage": 100.0,
+      "total_storage": "260.72 MB",
+      "minimum_memory_needed": "53.25 MB"
+    },
+    "task_detection": {
+      "detected_task": "segmentation",
+      "reason": "dataset.json contains image/label training pairs.",
+      "classification_classes": [],
+      "labels_found": true,
+      "label_files_detected": 20,
+      "image_label_pairs_detected": 20
+    },
+    "missing_data": [],
+    "warnings": [
+      "Volume dimensions are not consistent across CT images."
+    ],
+    "preprocessing_recommendations": [
+      {
+        "category": "shape_standardization",
+        "severity": "medium",
+        "message": "Crop, pad, resize, or patch volumes to a consistent training shape.",
+        "reason": "Volume dimensions differ; the most common dimensions cover 35.0% of patients."
+      },
+      {
+        "category": "intensity_normalization",
+        "severity": "medium",
+        "message": "Apply CT intensity clipping and normalization before model training.",
+        "reason": "CT images are commonly normalized to reduce scanner and protocol differences."
+      },
+      {
+        "category": "memory",
+        "severity": "info",
+        "message": "Plan at least the estimated minimum memory per loaded CT volume, plus overhead for batching and preprocessing.",
+        "reason": "Estimated minimum memory for this analyzer is 53.25 MB."
+      }
+    ],
+    "sections_ready": [
+      "dataset_overview",
+      "patient_counts",
+      "missing_data",
+      "task_detection",
+      "image_label_alignment",
+      "memory_requirements",
+      "slice_count_and_thickness",
+      "voxel_spacing",
+      "physical_volume",
+      "resolution",
+      "dimensions",
+      "intensity_statistics",
+      "intensity_statistics_table",
+      "intensity_percentiles",
+      "intensity_scale",
+      "voxel_validity",
+      "warnings",
+      "preprocessing_recommendations"
+    ]
+  }
+}

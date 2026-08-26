@@ -176,6 +176,15 @@ data/nii/
 *.tiff
 *.webp
 
+# Generated office lock files
+.~lock.*#
+
+# Generated Word reports
+data/**/*.docx
+
+# Local copy used by the desktop interface
+data/interface/nii/
+
 # Spyder project settings
 .spyderproject
 .spyproject

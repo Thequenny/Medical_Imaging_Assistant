@@ -8,7 +8,10 @@
             "program": "${file}",
             "python": "${workspaceFolder}/.venv/bin/python",
             "console": "integratedTerminal",
-            "cwd": "${workspaceFolder}"
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            }
         }
     ]
 }

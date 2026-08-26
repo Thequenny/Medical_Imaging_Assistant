@@ -1,4 +1,4 @@
-"""Generate an HTML report from data/analyse_dataset.json.
+"""Generate an HTML report from data/dataset_analysis/analyse_dataset.json.
 
 The report is intentionally dependency-free and focuses on medical dataset
 quality information useful before AI training.
@@ -15,9 +15,11 @@ from textwrap import wrap
 from typing import Any, Iterable
 
 
-DEFAULT_INPUT = Path(__file__).resolve().parent / "analyse_dataset.json"
-DEFAULT_HTML_OUTPUT = Path(__file__).resolve().parent / "report.html"
-DEFAULT_PDF_OUTPUT = Path(__file__).resolve().parent / "report.pdf"
+PROJECT_DIR = Path(__file__).resolve().parents[1]
+REPORT_DIR = PROJECT_DIR / "data" / "dataset_analysis"
+DEFAULT_INPUT = REPORT_DIR / "analyse_dataset.json"
+DEFAULT_HTML_OUTPUT = REPORT_DIR / "report.html"
+DEFAULT_PDF_OUTPUT = REPORT_DIR / "report.pdf"
 
 
 def generate_reports(
@@ -85,14 +87,6 @@ def _build_html_report(analysis: dict[str, Any]) -> str:
                         len(evaluation["missing_data"]),
                     ],
                     ["Annotations present", counts["annotations_present"]],
-                    [
-                        "Annotations required",
-                        counts.get("annotations_required", counts["patients_analyzed"]),
-                    ],
-                    [
-                        "Annotations not required",
-                        counts.get("annotations_not_required", 0),
-                    ],
                     ["Annotations missing", counts["annotations_missing"]],
                     [
                         "Analysis success",
@@ -229,7 +223,7 @@ def _build_html_report(analysis: dict[str, Any]) -> str:
         _section(
             "Statistics",
             _table(
-                ["Metric", "Value"],
+                ["Metric", "Rate"],
                 [
                     [
                         "Same in-plane resolution",
@@ -263,12 +257,21 @@ def _build_html_report(analysis: dict[str, Any]) -> str:
                         "Same orientation",
                         _format_percentage(consistency["percentage_same_orientation"]),
                     ],
-                    [
-                        "Dimensions are consistent",
-                        _yes_no(consistency["dimensions_are_consistent"]),
-                    ],
                 ],
                 class_name="kv",
+            )
+            + _subsection(
+                "Consistency Status",
+                _table(
+                    ["Metric", "Status"],
+                    [
+                        [
+                            "Dimensions are consistent",
+                            _yes_no(consistency["dimensions_are_consistent"]),
+                        ]
+                    ],
+                    class_name="kv",
+                ),
             ),
         ),
         _section("Warnings", _bullet_list(evaluation["warnings"])),
@@ -281,9 +284,10 @@ def _build_html_report(analysis: dict[str, Any]) -> str:
     return "\n".join(
         [
             "<!doctype html>",
-            '<html lang="en">',
+            '<html lang="en" tkinterweb-overflow-x="auto">',
             "<head>",
             '<meta charset="utf-8">',
+            '<meta name="viewport" content="width=device-width, initial-scale=1">',
             "<title>Medical Imaging Dataset Analysis Report</title>",
             _css(),
             "</head>",
@@ -298,9 +302,9 @@ def _build_html_report(analysis: dict[str, Any]) -> str:
 def _html_header(overview: dict[str, Any], generated_at: str) -> str:
     return f"""
 <header class="report-header">
-  <p class="eyebrow">Medical Imaging Dataset Analysis</p>
-  <h1>{_escape(overview["dataset_name"])}</h1>
-  <p>Generated on {_escape(generated_at)}</p>
+  <div class="eyebrow">Medical Imaging Dataset Analysis</div>
+  <h1 class="report-title">{_escape(overview["dataset_name"])}</h1>
+  <div class="report-date">Generated on {_escape(generated_at)}</div>
 </header>
 """
 
@@ -316,13 +320,20 @@ def _css() -> str:
   --accent: #1f6feb;
 }
 * { box-sizing: border-box; }
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 body {
   margin: 0;
   padding: 32px;
+  max-width: 100%;
+  overflow-x: hidden;
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
   background: white;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 .report-header {
   border-bottom: 2px solid var(--line);
@@ -331,48 +342,125 @@ body {
 }
 .eyebrow {
   color: var(--accent);
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
+  line-height: 1.6;
   letter-spacing: .08em;
-  margin: 0 0 8px;
+  margin: 0;
+  padding: 0 0 22px;
   text-transform: uppercase;
 }
-h1 { font-size: 30px; margin: 0 0 8px; }
+.report-title {
+  font-size: 27px;
+  line-height: 1.25;
+  margin: 0;
+  padding: 0 0 14px;
+}
+.report-date {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
 h2 {
   border-bottom: 1px solid var(--line);
-  font-size: 21px;
+  font-size: 19px;
+  line-height: 1.35;
   margin: 34px 0 14px;
   padding-bottom: 6px;
 }
 h3 {
   color: #26333b;
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 1.4;
   margin: 20px 0 8px;
 }
 table {
   border-collapse: collapse;
+  table-layout: auto;
   margin: 8px 0 18px;
+  min-width: 700px;
   width: 100%;
+}
+.kv, .frequency-table, .slice-table, .intensity-table,
+.recommendations-table, .wide-table {
+  table-layout: fixed;
 }
 th, td {
   border: 1px solid var(--line);
-  padding: 8px 10px;
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  padding: 7px 9px;
   text-align: left;
   vertical-align: top;
+  white-space: normal;
+  word-break: normal;
+  word-wrap: break-word;
 }
 th {
   background: var(--panel);
   font-weight: 700;
 }
+.mobile-label { display: none; }
+.cell-value { display: inline; }
 .kv td:first-child {
   color: var(--muted);
   font-weight: 700;
-  width: 28%;
 }
-ul { margin-top: 8px; }
+ul {
+  margin: 8px 0 20px;
+  padding-left: 28px;
+}
+li {
+  line-height: 1.7;
+  margin: 0 0 6px;
+}
 .empty {
   color: var(--muted);
   font-style: italic;
+}
+@media (max-width: 800px) {
+  body { padding: 16px; }
+  h1 { font-size: 23px; }
+  h2 { font-size: 17px; }
+  h3 { font-size: 13px; }
+  table, tbody, tr, td {
+    display: block;
+    width: 100%;
+  }
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  thead { display: none; }
+  tr {
+    border: 1px solid var(--line);
+    display: block;
+    margin: 0 0 12px;
+  }
+  td, .kv td:first-child {
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    display: block;
+    font-size: 14px;
+    line-height: 1.55;
+    padding: 9px 10px;
+    width: 100%;
+  }
+  td:last-child { border-bottom: 0; }
+  .mobile-label {
+    color: var(--muted);
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0 0 4px;
+    text-transform: uppercase;
+  }
+  .cell-value {
+    display: block;
+    line-height: 1.55;
+  }
 }
 @media print {
   body { padding: 18px; }
@@ -391,19 +479,54 @@ def _subsection(title: str, content: str) -> str:
     return f"<h3>{_escape(title)}</h3>\n{content}"
 
 
-def _table(headers: list[str], rows: Iterable[Iterable[Any]], class_name: str = "") -> str:
+def _table(
+    headers: list[str],
+    rows: Iterable[Iterable[Any]],
+    class_name: str = "",
+    column_widths: Iterable[int] | None = None,
+    min_width: int | None = None,
+) -> str:
     row_list = list(rows)
     if not row_list:
         return '<p class="empty">No data available.</p>'
 
+    if column_widths is None and "kv" in class_name.split():
+        column_widths = (42, 58)
+
     class_attr = f' class="{_escape(class_name)}"' if class_name else ""
-    header_html = "".join(f"<th>{_escape(header)}</th>" for header in headers)
+    style_attr = f' style="min-width: {min_width}px"' if min_width else ""
+    colgroup_html = ""
+    widths = None
+    if column_widths is not None:
+        widths = list(column_widths)
+        if len(widths) != len(headers):
+            raise ValueError("Column width count must match the table headers")
+        colgroup_html = "<colgroup>" + "".join(
+            f'<col style="width: {width}%">' for width in widths
+        ) + "</colgroup>"
+
+    header_html = "".join(
+        (
+            f'<th width="{widths[index]}%">{_escape(header)}</th>'
+            if widths is not None
+            else f"<th>{_escape(header)}</th>"
+        )
+        for index, header in enumerate(headers)
+    )
     rows_html = []
     for row in row_list:
-        cells = "".join(f"<td>{_escape(_format_value(cell))}</td>" for cell in row)
+        cells = "".join(
+            (
+                f'<td{f" width={widths[index]}%" if widths is not None else ""}>'
+                f'<span class="mobile-label">{_escape(headers[index])}</span>'
+                f'<span class="cell-value">{_escape(_format_value(cell))}</span></td>'
+            )
+            for index, cell in enumerate(row)
+        )
         rows_html.append(f"<tr>{cells}</tr>")
     return (
-        f"<table{class_attr}><thead><tr>{header_html}</tr></thead>"
+        f"<table{class_attr}{style_attr}>{colgroup_html}"
+        f"<thead><tr>{header_html}</tr></thead>"
         f"<tbody>{''.join(rows_html)}</tbody></table>"
     )
 
@@ -437,6 +560,8 @@ def _frequency_table(items: list[dict[str, Any]]) -> str:
             ]
             for item in items
         ),
+        class_name="frequency-table",
+        column_widths=(34, 41, 25),
     )
 
 
@@ -451,6 +576,8 @@ def _slice_thickness_table(items: list[dict[str, Any]]) -> str:
             ]
             for item in items
         ),
+        class_name="frequency-table",
+        column_widths=(34, 41, 25),
     )
 
 
@@ -466,6 +593,8 @@ def _slice_number_thickness_table(items: list[dict[str, Any]]) -> str:
             ]
             for item in items
         ),
+        class_name="slice-table",
+        column_widths=(22, 28, 28, 22),
     )
 
 
@@ -483,6 +612,9 @@ def _missing_data_table(items: list[dict[str, Any]]) -> str:
             ]
             for item in items
         ),
+        class_name="wide-table",
+        column_widths=(15, 8, 15, 19, 19, 24),
+        min_width=1200,
     )
 
 
@@ -511,6 +643,9 @@ def _misaligned_patients_table(items: list[dict[str, Any]]) -> str:
             ]
             for item in items
         ),
+        class_name="wide-table",
+        column_widths=(12, 6, 16, 12, 12, 14, 14, 14),
+        min_width=1400,
     )
 
 
@@ -518,6 +653,8 @@ def _intensity_summary_table(intensity: dict[str, Any]) -> str:
     return _table(
         ["Statistic", "Unit", "Value", "Meaning"],
         _intensity_summary_rows(intensity),
+        class_name="intensity-table",
+        column_widths=(24, 9, 15, 52),
     )
 
 
@@ -536,6 +673,9 @@ def _normalized_patients_table(items: list[dict[str, Any]]) -> str:
             ]
             for item in items
         ),
+        class_name="wide-table",
+        column_widths=(14, 8, 10, 10, 10, 10, 38),
+        min_width=1100,
     )
 
 
@@ -553,6 +693,9 @@ def _percentile_table(items: list[dict[str, Any]]) -> str:
             ]
             for item in items
         ),
+        class_name="wide-table",
+        column_widths=(16, 24, 15, 15, 15, 15),
+        min_width=900,
     )
 
 
@@ -568,6 +711,9 @@ def _recommendations_table(items: list[dict[str, Any]]) -> str:
             ]
             for item in items
         ),
+        class_name="recommendations-table",
+        column_widths=(12, 20, 30, 38),
+        min_width=900,
     )
 
 
@@ -610,13 +756,6 @@ def _build_text_report(analysis: dict[str, Any]) -> list[str]:
                 "Number of patients with missing data",
                 len(evaluation["missing_data"]),
             ),
-            ("Annotations present", counts["annotations_present"]),
-            (
-                "Annotations required",
-                counts.get("annotations_required", counts["patients_analyzed"]),
-            ),
-            ("Annotations not required", counts.get("annotations_not_required", 0)),
-            ("Annotations missing", counts["annotations_missing"]),
             ("Minimum memory", overview["minimum_memory_needed"]),
         ],
     )

@@ -1,0 +1,145 @@
+{
+  "patient_id": "spleen_10",
+  "image": {
+    "metadata": {
+      "path": "C:\\Users\\lelen\\Desktop\\Recherches stage\\Stage Japon\\Hokkaido\\Stage\\check_data_project\\check_data\\dataset\\Task09_Spleen\\imagesTr\\spleen_10.nii.gz",
+      "dimensions": [
+        512,
+        512,
+        55
+      ],
+      "voxel_spacing": [
+        0.9765620231628418,
+        0.9765620231628418,
+        5.0
+      ],
+      "orientation": [
+        "R",
+        "A",
+        "S"
+      ],
+      "datatype": "float32",
+      "affine": [
+        [
+          0.9765620231628418,
+          0.0,
+          0.0,
+          -499.023193359375
+        ],
+        [
+          0.0,
+          0.9765620231628418,
+          0.0,
+          -499.023193359375
+        ],
+        [
+          0.0,
+          0.0,
+          5.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "voxel_count": 14417920,
+      "physical_voxel_size_mm3": 4.768366925419514,
+      "physical_size_mm": [
+        499.999755859375,
+        499.999755859375,
+        275.0
+      ],
+      "memory_estimate": {
+        "file_size_bytes": 15682065,
+        "native_array_bytes": 57671680,
+        "float32_array_bytes": 57671680,
+        "float64_array_bytes": 115343360
+      }
+    },
+    "intensity": {
+      "min": -1024.0,
+      "max": 3072.0,
+      "mean": -450.26174052845346,
+      "std": 481.5650926686373,
+      "percentiles": {
+        "p0_5": -1024.0,
+        "p1": -1024.0,
+        "p5": -1024.0,
+        "p25": -1008.0,
+        "p50": -115.0,
+        "p75": -50.0,
+        "p95": 113.0,
+        "p99": 270.0,
+        "p99_5": 358.0
+      },
+      "finite_voxel_count": 14417920,
+      "non_finite_voxel_count": 0
+    }
+  },
+  "annotation": {
+    "present": true,
+    "path": "C:\\Users\\lelen\\Desktop\\Recherches stage\\Stage Japon\\Hokkaido\\Stage\\check_data_project\\check_data\\dataset\\Task09_Spleen\\labelsTr\\spleen_10.nii.gz",
+    "metadata": {
+      "path": "C:\\Users\\lelen\\Desktop\\Recherches stage\\Stage Japon\\Hokkaido\\Stage\\check_data_project\\check_data\\dataset\\Task09_Spleen\\labelsTr\\spleen_10.nii.gz",
+      "dimensions": [
+        512,
+        512,
+        55
+      ],
+      "voxel_spacing": [
+        0.9765620231628418,
+        0.9765620231628418,
+        5.0
+      ],
+      "orientation": [
+        "R",
+        "A",
+        "S"
+      ],
+      "datatype": "uint8",
+      "affine": [
+        [
+          0.9765620231628418,
+          0.0,
+          0.0,
+          -499.023193359375
+        ],
+        [
+          0.0,
+          0.9765620231628418,
+          0.0,
+          -499.023193359375
+        ],
+        [
+          0.0,
+          0.0,
+          5.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "voxel_count": 14417920,
+      "physical_voxel_size_mm3": 4.768366925419514,
+      "physical_size_mm": [
+        499.999755859375,
+        499.999755859375,
+        275.0
+      ],
+      "memory_estimate": {
+        "file_size_bytes": 17843,
+        "native_array_bytes": 14417920,
+        "float32_array_bytes": 57671680,
+        "float64_array_bytes": 115343360
+      }
+    },
+    "message": "Annotation label is present."
+  }
+}

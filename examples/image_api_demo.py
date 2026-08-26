@@ -1,10 +1,13 @@
 import base64
 
-from api_config import QWEN_MODEL, create_qwen_client
+from src.test_accuracy_evaluation.api_config import (
+    QWEN_MODEL,
+    create_qwen_client,
+)
 
 
 client = create_qwen_client()
-with open("src/image.png", "rb") as f:
+with open("examples/assets/image.png", "rb") as f:
     image = base64.b64encode(f.read()).decode("utf-8")
     #image= base64.b64encode(f.read()).decode()
 task=[{ "type": "text",

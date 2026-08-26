@@ -1,0 +1,4 @@
+# Desktop interface and HTML report viewer
+-r core.txt
+-r api.txt
+tkinterweb

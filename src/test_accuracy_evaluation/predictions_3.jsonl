@@ -1,0 +1,10 @@
+{"patient_id": "34", "organs": ["liver", "right kidney", "left kidney", "spleen"], "sequence": "T1"}
+{"patient_id": "37", "organs": ["liver", "right kidney", "left kidney", "spleen"], "sequence": "T1"}
+{"patient_id": "21", "organs": ["liver", "right kidney", "left kidney", "spleen"], "sequence": "T1"}
+{"patient_id": "3", "organs": ["liver", "right kidney", "left kidney", "spleen"], "sequence": "T1"}
+{"patient_id": "19", "organs": ["liver", "right kidney", "left kidney", "spleen"], "sequence": "T1"}
+{"patient_id": "33", "organs": ["liver", "right kidney", "left kidney", "spleen"], "sequence": "T2"}
+{"patient_id": "5", "organs": ["liver", "right kidney", "left kidney", "spleen"], "sequence": "T2"}
+{"patient_id": "2", "organs": ["liver", "right kidney", "left kidney", "spleen"], "sequence": "T2"}
+{"patient_id": "36", "organs": ["liver", "right kidney", "left kidney", "spleen"], "sequence": "T2"}
+{"patient_id": "31", "organs": ["liver", "right kidney", "left kidney", "spleen"], "sequence": "T2"}

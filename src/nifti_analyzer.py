@@ -32,12 +32,13 @@ else:
 
 NIFTI_EXTENSIONS = (".nii.gz", ".nii")
 DICOM_EXTENSION = ".dcm"
-DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "data" / "CT_data.json"
+PROJECT_DIR = Path(__file__).resolve().parents[1]
+DEFAULT_OUTPUT = PROJECT_DIR / "data" / "dataset_analysis" / "CT_data.json"
 DEFAULT_PREPARED_DATASET_DIRNAME = "converted_nifti"
 DEFAULT_CONVERSION_BUFFER_DIRNAME = ".conversion_buffer"
 DEFAULT_WARNING_FILENAME = "Warning.txt"
 DEFAULT_WARNING_PATH = (
-    Path(__file__).resolve().parents[1] / "data" / DEFAULT_WARNING_FILENAME
+    PROJECT_DIR / "data" / "dataset_analysis" / DEFAULT_WARNING_FILENAME
 )
 MINIMUM_DICOM_CT_SLICES = 4
 
@@ -613,15 +614,20 @@ def _load_general_conversion_function() -> tuple[
     Callable[[Path, Path, Path], Any] | None,
     str | None,
 ]:
-    try:
-        module = importlib.import_module("general_conversion")
-    except Exception as exc:
+    import_errors = []
+    for module_name in ("src.general_conversion", "general_conversion"):
+        try:
+            module = importlib.import_module(module_name)
+            break
+        except Exception as exc:
+            import_errors.append(
+                f"{module_name}: {type(exc).__name__}: {exc}"
+            )
+    else:
         return (
             None,
-            (
-                "Could not import general_conversion.CTdcm_to_Nii. "
-                f"Reason: {type(exc).__name__}: {exc}"
-            ),
+            "Could not import general_conversion.CTdcm_to_Nii. Reasons: "
+            + "; ".join(import_errors),
         )
 
     converter = getattr(module, "CTdcm_to_Nii", None)
@@ -802,7 +808,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--output",
         default=str(DEFAULT_OUTPUT),
-        help="JSON output path. Defaults to data\\CT_data.json.",
+        help=(
+            "JSON output path. Defaults to "
+            "data/dataset_analysis/CT_data.json."
+        ),
     )
     args = parser.parse_args(argv)
 

@@ -1,0 +1,4 @@
+# Qwen/OpenAI API client used by the chat and report workflows
+openai==2.48.0
+python-dotenv
+markdown

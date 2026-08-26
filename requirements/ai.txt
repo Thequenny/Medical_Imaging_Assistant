@@ -1,0 +1,4 @@
+# Complete AI and evaluation stack
+-r api.txt
+-r evaluation.txt
+-r local-model.txt

@@ -26,7 +26,10 @@ import argparse
 import base64
 import markdown as md_lib
 
-from api_config import QWEN_MODEL, create_qwen_client
+try:
+    from .api_config import QWEN_MODEL, create_qwen_client
+except ImportError:
+    from api_config import QWEN_MODEL, create_qwen_client
 
 
 DEFAULT_SLICE_ANALYSIS_PROMPT = """
@@ -94,7 +97,7 @@ def convert_to_png(slice_type, nifti_path, root_dir="."):
 
 def generate_slice_html_report(
     image_paths,
-    output_path=Path("data/slice_vlm_report.html"),
+    output_path=Path("data/dataset_analysis/slice_vlm_report.html"),
     series_name=None,
     slice_type=None,
     prompt=None,
@@ -304,15 +307,12 @@ def _build_slice_html_report(
       margin-top: 28px;
       font-size: 20px;
     }}
-    .meta, .notice {{
+    .meta {{
       background: #ffffff;
       border: 1px solid #d9e2ec;
       border-radius: 6px;
       padding: 16px;
       margin: 16px 0;
-    }}
-    .notice {{
-      border-left: 4px solid #f0b429;
     }}
     pre {{
       white-space: pre-wrap;
@@ -374,10 +374,6 @@ def _build_slice_html_report(
       <div><strong>Images used:</strong> {len(image_paths)}</div>
       <div><strong>Batch spacing:</strong> {escaped_batch_stride}</div>
       <div><strong>Generated:</strong> {escape(generated_at)}</div>
-    </section>
-    <section class="notice">
-      Resume automatique produit par un modele vision-langage. Il doit etre
-      relu et valide par un expert avant toute interpretation clinique.
     </section>
     <h2>Resume global</h2>
     <pre>{escaped_answer}</pre>
@@ -604,7 +600,10 @@ def chat_qwen(
 
     return "[stopped: too many tool rounds]", messages
 
-def generate_pdf(text, output_path=Path("data/slice_report.pdf")):
+def generate_pdf(
+    text,
+    output_path=Path("data/dataset_analysis/slice_report.pdf"),
+):
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 

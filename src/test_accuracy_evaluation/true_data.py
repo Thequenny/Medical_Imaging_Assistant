@@ -6,19 +6,23 @@ from pathlib import Path
 
 from huggingface_hub import snapshot_download
 
-from api_config import QWEN_MODEL, create_qwen_client
+try:
+    from .api_config import QWEN_MODEL, create_qwen_client
+except ImportError:
+    from api_config import QWEN_MODEL, create_qwen_client
 
 
 DEFAULT_PATIENTS_PER_SEQUENCE = 5
 RESPONSE_COUNT = 3
 SEQUENCES = ("T1", "T2")
 
-PROJECT_DIR = Path(__file__).resolve().parents[1]
-TRAIN_PATH = PROJECT_DIR / "src" / "train.jsonl"
-REFERENCE_PATH = PROJECT_DIR / "src" / "dice.jsonl"
+PROJECT_DIR = Path(__file__).resolve().parents[2]
+EVALUATION_DIR = Path(__file__).resolve().parent
+TRAIN_PATH = EVALUATION_DIR / "train.jsonl"
+REFERENCE_PATH = EVALUATION_DIR / "dice.jsonl"
 PREDICTION_PATHS = {
     response_number: (
-        PROJECT_DIR / "src" / f"predictions_run_{response_number}.jsonl"
+        EVALUATION_DIR / f"predictions_{response_number}.jsonl"
     )
     for response_number in range(1, RESPONSE_COUNT + 1)
 }
@@ -46,7 +50,6 @@ Explication :
 - "organs" contient uniquement les organes visibles parmi : liver,
   right kidney, left kidney et spleen ;
 - "sequence" contient le type de séquence IRM détecté : "T1" ou "T2" ;
-- ne calcule et ne retourne aucun nombre de pixels ;
 - utilise exactement les noms de champs et d'organes indiqués ci-dessus.
 """
 
@@ -247,7 +250,10 @@ def build_model_task(output_dir, number_of_slices):
 
 
 def generate_predictions(records, prediction_paths=PREDICTION_PATHS):
-    from slices_analyse import convert_to_png
+    try:
+        from .slices_analyse import convert_to_png
+    except ImportError:
+        from slices_analyse import convert_to_png
 
     prediction_paths = {
         response_number: Path(path)
@@ -450,10 +456,121 @@ def calculate_response_scores(case_groups, predictions):
     }
 
 
+def calculate_combined_organ_scores(case_groups, prediction_sets):
+    records = ordered_case_records(case_groups)
+    combined_records = []
+    combined_predictions = []
+
+    for predictions in prediction_sets:
+        if len(predictions) != len(records):
+            raise ValueError(
+                f"{len(records)} prédictions sont requises par réponse, mais "
+                f"{len(predictions)} seulement sont disponibles."
+            )
+        combined_records.extend(records)
+        combined_predictions.extend(predictions)
+
+    organ_scores = {}
+    offset = 0
+    for sequence in SEQUENCES:
+        sequence_records = case_groups[sequence]
+        end = offset + len(sequence_records)
+        sequence_predictions = [
+            prediction
+            for predictions in prediction_sets
+            for prediction in predictions[offset:end]
+        ]
+        organ_scores[sequence] = calculate_organ_score(
+            sequence_records * len(prediction_sets),
+            sequence_predictions,
+        )
+        offset = end
+
+    return {
+        "score_organes_par_sequence (en %)": organ_scores,
+        "score_organes_global (en %)": calculate_organ_score(
+            combined_records,
+            combined_predictions,
+        ),
+    }
+
+
+def calculate_stability_scores(prediction_sets):
+    if len(prediction_sets) < 2:
+        raise ValueError(
+            "Au moins deux séries de prédictions sont requises pour calculer "
+            "la stabilité."
+        )
+
+    prediction_count = len(prediction_sets[0])
+    if prediction_count == 0:
+        raise ValueError("Aucune prédiction à comparer.")
+    if any(
+        len(predictions) != prediction_count
+        for predictions in prediction_sets
+    ):
+        raise ValueError(
+            "Toutes les séries doivent contenir le même nombre de prédictions."
+        )
+
+    matching_sequences = 0
+    matching_organs = 0
+    matching_complete_answers = 0
+    compared_pairs = 0
+
+    for prediction_index in range(prediction_count):
+        patient_predictions = [
+            predictions[prediction_index]
+            for predictions in prediction_sets
+        ]
+        patient_ids = {
+            str(prediction.get("patient_id", ""))
+            for prediction in patient_predictions
+        }
+        if len(patient_ids) != 1:
+            raise ValueError(
+                "Les séries de prédictions ne sont pas alignées sur les "
+                f"mêmes patients à la position {prediction_index + 1}."
+            )
+
+        for first_index in range(len(patient_predictions) - 1):
+            first = patient_predictions[first_index]
+            first_sequence = str(first.get("sequence", "")).strip().upper()
+            first_organs = frozenset(first.get("organs", []))
+
+            for second in patient_predictions[first_index + 1:]:
+                second_sequence = str(
+                    second.get("sequence", "")
+                ).strip().upper()
+                second_organs = frozenset(second.get("organs", []))
+
+                sequence_matches = first_sequence == second_sequence
+                organs_match = first_organs == second_organs
+                matching_sequences += sequence_matches
+                matching_organs += organs_match
+                matching_complete_answers += sequence_matches and organs_match
+                compared_pairs += 1
+
+    def percentage(match_count):
+        return round(match_count / compared_pairs * 100, 2)
+
+    return {
+        "paires_de_reponses_comparees": compared_pairs,
+        "score_stabilite_sequence_IRM (en %)": percentage(
+            matching_sequences
+        ),
+        "score_stabilite_organes (en %)": percentage(matching_organs),
+        "score_stabilite_reponse_complete (en %)": percentage(
+            matching_complete_answers
+        ),
+    }
+
+
 def calculate_all_scores(case_groups, prediction_paths=PREDICTION_PATHS):
     records = ordered_case_records(case_groups)
     scores = {}
     sequence_matrices = []
+    prediction_sets = []
 
     for response_number, prediction_path in prediction_paths.items():
         prediction_path = Path(prediction_path)
@@ -472,14 +589,19 @@ def calculate_all_scores(case_groups, prediction_paths=PREDICTION_PATHS):
         sequence_matrices.append(
             response_scores["matrice_confusion_sequence"]
         )
+        prediction_sets.append(predictions)
 
     merged_matrix = merge_sequence_confusion_matrices(sequence_matrices)
-    scores["synthese_sequence_3_reponses"] = {
+    scores["synthese_3_reponses"] = {
         "predictions_evaluees": sum(
             sum(row.values()) for row in merged_matrix.values()
         ),
+        **calculate_combined_organ_scores(case_groups, prediction_sets),
         "matrice_confusion_sequence": merged_matrix,
         "score_sequence_IRM (en %)": sequence_accuracy(merged_matrix),
+        "stabilite_entre_reponses": calculate_stability_scores(
+            prediction_sets
+        ),
     }
 
     return scores

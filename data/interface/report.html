@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Medical Imaging Dataset Analysis Report</title>
+
+<style>
+:root {
+  --text: #172026;
+  --muted: #5f6b73;
+  --line: #d8dee3;
+  --panel: #f6f8fa;
+  --accent: #1f6feb;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 32px;
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  background: white;
+  line-height: 1.45;
+}
+.report-header {
+  border-bottom: 2px solid var(--line);
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+}
+.eyebrow {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+h1 { font-size: 30px; margin: 0 0 8px; }
+h2 {
+  border-bottom: 1px solid var(--line);
+  font-size: 21px;
+  margin: 34px 0 14px;
+  padding-bottom: 6px;
+}
+h3 {
+  color: #26333b;
+  font-size: 16px;
+  margin: 20px 0 8px;
+}
+table {
+  border-collapse: collapse;
+  margin: 8px 0 18px;
+  width: 100%;
+}
+th, td {
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: var(--panel);
+  font-weight: 700;
+}
+.kv td:first-child {
+  color: var(--muted);
+  font-weight: 700;
+  width: 28%;
+}
+ul { margin-top: 8px; }
+.empty {
+  color: var(--muted);
+  font-style: italic;
+}
+@media print {
+  body { padding: 18px; }
+  h2 { break-after: avoid; }
+  table { break-inside: avoid; }
+}
+</style>
+
+</head>
+<body>
+
+<header class="report-header">
+  <p class="eyebrow">Medical Imaging Dataset Analysis</p>
+  <h1>dataset</h1>
+  <p>Generated on 2026-08-26 10:49</p>
+</header>
+
+<section><h2>Dataset Overview</h2>
+<table class="kv"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Dataset name</td><td>dataset</td></tr><tr><td>Split</td><td>train</td></tr><tr><td>Task type</td><td>segmentation</td></tr><tr><td>Task reason</td><td>Matching image and label NIfTI files were detected.</td></tr><tr><td>Minimum memory needed</td><td>53.25 MB</td></tr></tbody></table></section>
+<section><h2>Patients Information</h2>
+<table class="kv"><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody><tr><td>Number of patients</td><td>52</td></tr><tr><td>Number of analysed patients</td><td>52</td></tr><tr><td>Number of failed analyses</td><td>0</td></tr><tr><td>Number of patients with missing data</td><td>0</td></tr><tr><td>Annotations present</td><td>52</td></tr><tr><td>Annotations required</td><td>52</td></tr><tr><td>Annotations not required</td><td>0</td></tr><tr><td>Annotations missing</td><td>0</td></tr><tr><td>Analysis success</td><td>100%</td></tr><tr><td>Annotation coverage</td><td>100%</td></tr></tbody></table></section>
+<section><h2>Task Detection</h2>
+<table class="kv"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Detected task</td><td>segmentation</td></tr><tr><td>Reason</td><td>Matching image and label NIfTI files were detected.</td></tr><tr><td>Classification classes</td><td>None</td></tr><tr><td>Labels found</td><td>Yes</td></tr><tr><td>Label files detected</td><td>52</td></tr><tr><td>Image/label pairs detected</td><td>52</td></tr></tbody></table></section>
+<section><h2>Missing Data</h2>
+<p class="empty">No data available.</p></section>
+<section><h2>Image/Label Alignment</h2>
+<table class="kv"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Checked image/label pairs</td><td>52</td></tr><tr><td>Aligned pairs</td><td>20</td></tr><tr><td>Misaligned pairs</td><td>32</td></tr><tr><td>Alignment</td><td>38.462%</td></tr><tr><td>Explanation</td><td>Image and label are considered aligned when dimensions, voxel spacing, orientation, and affine matrix match within a small numerical tolerance.</td></tr></tbody></table><h3>Misaligned Patients</h3>
+<table><thead><tr><th>Patient ID</th><th>Split</th><th>Issues</th><th>Image dimensions</th><th>Label dimensions</th><th>Image voxel spacing</th><th>Label voxel spacing</th><th>Affine max difference</th></tr></thead><tbody><tr><td>prostate_00</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x15x2</td><td>320x320x15</td><td>0.6x0.6x4x1</td><td>0.6x0.6x4</td><td>0</td></tr><tr><td>prostate_01</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_02</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x24x2</td><td>320x320x24</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_04</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x15x2</td><td>320x320x15</td><td>0.6x0.6x4x1</td><td>0.6x0.6x4</td><td>0</td></tr><tr><td>prostate_06</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_07</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_10</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_13</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_14</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_16</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_17</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_18</td><td>train</td><td>dimensions, voxel spacing</td><td>256x256x18x2</td><td>256x256x18</td><td>0.75x0.75x4x1</td><td>0.75x0.75x4</td><td>0</td></tr><tr><td>prostate_20</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_21</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_24</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_25</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x19x2</td><td>320x320x19</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_28</td><td>train</td><td>dimensions, voxel spacing</td><td>384x384x11x2</td><td>384x384x11</td><td>0.604x0.604x4x1</td><td>0.604x0.604x4</td><td>0</td></tr><tr><td>prostate_29</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x15x2</td><td>320x320x15</td><td>0.6x0.6x4x1</td><td>0.6x0.6x4</td><td>0</td></tr><tr><td>prostate_31</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_32</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_34</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x15x2</td><td>320x320x15</td><td>0.6x0.6x4x1</td><td>0.6x0.6x4</td><td>0</td></tr><tr><td>prostate_35</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_37</td><td>train</td><td>dimensions, voxel spacing</td><td>256x256x15x2</td><td>256x256x15</td><td>0.75x0.75x4x1</td><td>0.75x0.75x4</td><td>0</td></tr><tr><td>prostate_38</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_39</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x15x2</td><td>320x320x15</td><td>0.6x0.6x4x1</td><td>0.6x0.6x4</td><td>0</td></tr><tr><td>prostate_40</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_41</td><td>train</td><td>dimensions, voxel spacing</td><td>256x256x18x2</td><td>256x256x18</td><td>0.75x0.75x3x1</td><td>0.75x0.75x3</td><td>0</td></tr><tr><td>prostate_42</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x22x2</td><td>320x320x22</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_43</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_44</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_46</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr><tr><td>prostate_47</td><td>train</td><td>dimensions, voxel spacing</td><td>320x320x20x2</td><td>320x320x20</td><td>0.625x0.625x3.6x1</td><td>0.625x0.625x3.6</td><td>0</td></tr></tbody></table></section>
+<section><h2>Slice Count and Thickness</h2>
+<h3>Dimensionality</h3>
+<table><thead><tr><th>Value</th><th>Number of patients</th><th>Percentage</th></tr></thead><tbody><tr><td>3D</td><td>52</td><td>100%</td></tr></tbody></table><h3>Slices data</h3>
+<table><thead><tr><th>Number of slices</th><th>Slice thickness (mm)</th><th>Number of patients</th><th>Percentage</th></tr></thead><tbody><tr><td>20</td><td>3.6</td><td>20</td><td>38.462%</td></tr><tr><td>120</td><td>1.37</td><td>7</td><td>13.462%</td></tr><tr><td>15</td><td>4</td><td>6</td><td>11.539%</td></tr><tr><td>110</td><td>1.37</td><td>5</td><td>9.615%</td></tr><tr><td>100</td><td>1.37</td><td>3</td><td>5.769%</td></tr><tr><td>130</td><td>1.37</td><td>2</td><td>3.846%</td></tr><tr><td>109</td><td>1.37</td><td>1</td><td>1.923%</td></tr><tr><td>11</td><td>4</td><td>1</td><td>1.923%</td></tr><tr><td>122</td><td>1.37</td><td>1</td><td>1.923%</td></tr><tr><td>18</td><td>3</td><td>1</td><td>1.923%</td></tr><tr><td>18</td><td>4</td><td>1</td><td>1.923%</td></tr><tr><td>19</td><td>3.6</td><td>1</td><td>1.923%</td></tr><tr><td>22</td><td>3.6</td><td>1</td><td>1.923%</td></tr><tr><td>24</td><td>3.6</td><td>1</td><td>1.923%</td></tr><tr><td>90</td><td>1.37</td><td>1</td><td>1.923%</td></tr></tbody></table></section>
+<section><h2>Voxel Size</h2>
+<h3>Voxel Size (XxYxZ mm)</h3>
+<table><thead><tr><th>Value</th><th>Number of patients</th><th>Percentage</th></tr></thead><tbody><tr><td>0.625x0.625x3.6</td><td>23</td><td>44.231%</td></tr><tr><td>1.25x1.25x1.37</td><td>20</td><td>38.462%</td></tr><tr><td>0.6x0.6x4</td><td>5</td><td>9.615%</td></tr><tr><td>0.75x0.75x4</td><td>2</td><td>3.846%</td></tr><tr><td>0.604x0.604x4</td><td>1</td><td>1.923%</td></tr><tr><td>0.75x0.75x3</td><td>1</td><td>1.923%</td></tr></tbody></table></section>
+<section><h2>Intensity Statistics</h2>
+<h3>Patient Intensity Summary</h3>
+<table><thead><tr><th>Statistic</th><th>Unit</th><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td>Minimum intensity</td><td>HU</td><td>0</td><td>Lowest voxel intensity in the dataset.</td></tr><tr><td>Maximum intensity</td><td>HU</td><td>3860</td><td>Highest voxel intensity in the dataset.</td></tr><tr><td>Mean intensity</td><td>HU</td><td>281.667</td><td>Average of the patient mean intensities.</td></tr><tr><td>Standard deviation</td><td>HU</td><td>364.196</td><td>Average of patient intensity standard deviations.</td></tr></tbody></table><h3>Intensity Scale Check</h3>
+<table class="kv"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Raw HU-like patients</td><td>52</td></tr><tr><td>Suspected normalized patients</td><td>0</td></tr><tr><td>Unknown intensity scale</td><td>0</td></tr><tr><td>Suspected normalized patient IDs</td><td>None</td></tr><tr><td>Explanation</td><td>This is a heuristic check. Raw CT is expected to look compatible with Hounsfield units. Volumes close to 0..1, -1..1, or centered around 0 with standard deviation near 1 are reported as suspected normalized.</td></tr></tbody></table><p class="empty">No data available.</p><h3>Voxel Validity</h3>
+<table class="kv"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Total voxels</td><td>353.071.104 voxels</td></tr><tr><td>Valid voxels</td><td>353.071.104 voxels (100%)</td></tr><tr><td>Non-finite voxels</td><td>0 voxels (0%)</td></tr><tr><td>Explanation</td><td>Finite voxels are valid numeric CT intensity values. Non-finite voxels are NaN or infinite values that should be cleaned before training.</td></tr></tbody></table></section>
+<section><h2>Statistics</h2>
+<table class="kv"><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody><tr><td>Same in-plane resolution</td><td>44.231%</td></tr><tr><td>Same slice count</td><td>38.462%</td></tr><tr><td>Same slice thickness</td><td>44.231%</td></tr><tr><td>Same voxel spacing</td><td>44.231%</td></tr><tr><td>Different voxel spacing</td><td>55.769%</td></tr><tr><td>Same dimensions</td><td>38.462%</td></tr><tr><td>Same orientation</td><td>100%</td></tr><tr><td>Dimensions are consistent</td><td>No</td></tr></tbody></table></section>
+<section><h2>Warnings</h2>
+<ul><li>Voxel spacing varies across CT images.</li><li>Slice thickness varies across CT images.</li><li>Volume dimensions are not consistent across CT images.</li><li>32 image/label pair(s) are not aligned.</li></ul></section>
+<section><h2>Preprocessing Recommendations</h2>
+<table><thead><tr><th>Severity</th><th>Category</th><th>Recommendation</th><th>Reason</th></tr></thead><tbody><tr><td>high</td><td>spatial resampling</td><td>Resample CT images and labels to a common voxel spacing before AI training.</td><td>Only 44.231% of patients share the most common voxel spacing.</td></tr><tr><td>medium</td><td>slice thickness</td><td>Standardize slice thickness or use preprocessing that handles anisotropy.</td><td>Slice thickness differs across patients; the most common thickness covers 44.231% of patients.</td></tr><tr><td>medium</td><td>shape standardization</td><td>Crop, pad, resize, or patch volumes to a consistent training shape.</td><td>Volume dimensions differ; the most common dimensions cover 38.462% of patients.</td></tr><tr><td>high</td><td>label alignment</td><td>Fix image/label alignment before model training.</td><td>Misaligned patient(s): prostate_00, prostate_01, prostate_02, prostate_04, prostate_06, prostate_07, prostate_10, prostate_13, prostate_14, prostate_16, prostate_17, prostate_18, prostate_20, prostate_21, prostate_24, prostate_25, prostate_28, prostate_29, prostate_31, prostate_32, prostate_34, prostate_35, prostate_37, prostate_38, prostate_39, prostate_40, prostate_41, prostate_42, prostate_43, prostate_44, prostate_46, prostate_47.</td></tr><tr><td>medium</td><td>intensity normalization</td><td>Apply CT intensity clipping and normalization before model training.</td><td>CT images are commonly normalized to reduce scanner and protocol differences.</td></tr><tr><td>info</td><td>memory</td><td>Plan at least the estimated minimum memory per loaded CT volume, plus overhead for batching and preprocessing.</td><td>Estimated minimum memory for this analyzer is 53.25 MB.</td></tr></tbody></table></section>
+</body>
+</html>
