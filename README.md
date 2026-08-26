@@ -1,17 +1,17 @@
 # LLM_project
 
-Interface graphique pour inspecter un dataset d'imagerie médicale, générer son
-rapport de qualité et discuter des coupes sélectionnées avec Qwen.
+A desktop application for inspecting medical imaging datasets, generating
+quality reports, and discussing selected slices with Qwen.
 
-La documentation détaillée de l'analyse NIfTI/DICOM et des commandes en ligne
-se trouve dans [docs/dataset_analysis.md](docs/dataset_analysis.md).
+Detailed documentation for NIfTI/DICOM analysis and command-line workflows is
+available in [docs/dataset_analysis.md](docs/dataset_analysis.md).
 
-## Prérequis
+## Prerequisites
 
-- Python 3.10 ou plus récent ;
-- Tkinter pour l'interface graphique.
+- Python 3.10 or newer;
+- Tkinter for the desktop interface.
 
-Sous Ubuntu, installez Tkinter avec :
+On Ubuntu, install Tkinter with:
 
 ```bash
 sudo apt install python3-tk
@@ -19,7 +19,7 @@ sudo apt install python3-tk
 
 ## Installation
 
-Depuis la racine du projet, créez et activez un environnement virtuel :
+From the project root, create and activate a virtual environment:
 
 ```bash
 python3 -m venv .venv
@@ -28,7 +28,7 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements/interface.txt
 ```
 
-Sous Windows :
+On Windows:
 
 ```powershell
 py -m venv .venv
@@ -37,16 +37,16 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements/interface.txt
 ```
 
-## Configuration de Qwen
+## Qwen configuration
 
-Cette étape est facultative pour l'analyse locale du dataset, mais nécessaire
-pour envoyer des coupes au modèle depuis l'interface :
+This step is optional for local dataset analysis, but required to send slices
+to the model from the interface:
 
 ```bash
 cp .env.example .env
 ```
 
-Renseignez ensuite les paramètres dans `.env` :
+Then configure `.env`:
 
 ```dotenv
 QWEN_API_KEY=replace-with-your-api-key
@@ -54,48 +54,45 @@ QWEN_BASE_URL=https://example.com/v1
 QWEN_MODEL=qwen-model-name
 ```
 
-Le fichier `.env` est ignoré par Git. Ne publiez jamais une clé réelle.
+The `.env` file is ignored by Git. Never publish a real API key.
 
-## Lancer l'interface
+## Launching the interface
 
-Activez l'environnement virtuel, placez-vous à la racine du projet, puis
-exécutez :
+Activate the virtual environment, move to the project root, and run:
 
 ```bash
 python -m src.interface
 ```
 
-Dans l'interface :
+In the interface:
 
-1. choisissez le split à analyser (`train`, `test`, `validation` ou `all`) ;
-2. cliquez sur **Select and analyze folder** et sélectionnez le dossier du
-   dataset ;
-3. ouvrez le rapport généré avec **Open generated report** ;
-4. utilisez l'espace d'exploration pour afficher les coupes NIfTI et, si Qwen
-   est configuré, les commenter avec le modèle.
+1. choose the split to analyze (`train`, `test`, `validation`, or `all`);
+2. click **Select and analyze folder** and select the dataset directory;
+3. open the generated report with **Open generated report**;
+4. use the exploration workspace to display NIfTI slices and, when Qwen is
+   configured, discuss them with the model.
 
-Les rapports de l'interface sont enregistrés dans :
+Interface reports are written to:
 
 ```text
 data/dataset_analysis/
 ```
 
-## Données acceptées
+## Supported data
 
-L'interface prend en charge les volumes `.nii`, `.nii.gz` et les séries DICOM
-`.dcm`. Les détails sur la détection des datasets, la conversion DICOM et le
-contenu des rapports sont disponibles dans la
-[documentation d'analyse](docs/dataset_analysis.md).
+The interface supports `.nii` and `.nii.gz` volumes as well as `.dcm` DICOM
+series. Details about dataset detection, DICOM conversion, and report contents
+are available in the
+[dataset analysis documentation](docs/dataset_analysis.md).
 
-## Confidentialité
+## Privacy
 
-L'analyse du dataset est locale. Seules les coupes explicitement envoyées à
-Qwen quittent la machine et sont transmises au serveur défini par
-`QWEN_BASE_URL`. Vérifiez les règles de confidentialité applicables avant
-d'envoyer des données médicales.
+Dataset analysis runs locally. Only slices explicitly submitted to Qwen leave
+the machine and are sent to the server configured through `QWEN_BASE_URL`.
+Review the applicable privacy requirements before sending medical data.
 
 ## Documentation
 
-- [Analyse des datasets NIfTI/DICOM](docs/dataset_analysis.md)
-- [Organisation des dépendances](requirements/README.md)
-- [Organisation des données](data/README.md)
+- [NIfTI/DICOM dataset analysis](docs/dataset_analysis.md)
+- [Dependency groups](requirements/README.md)
+- [Data directory organization](data/README.md)
