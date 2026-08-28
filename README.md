@@ -102,6 +102,10 @@ Dataset analysis runs locally. Only slices explicitly submitted to Qwen leave
 the machine and are sent to the server configured through `QWEN_BASE_URL`.
 Review the applicable privacy requirements before sending medical data.
 
+## AI-assisted development
+
+OpenAI Codex was used to assist with code refactoring and repository maintenance. All AI generated changes were reviewed, tested, and validated by me.
+
 ## Documentation
 
 - [NIfTI/DICOM dataset analysis](docs/dataset_analysis.md)
