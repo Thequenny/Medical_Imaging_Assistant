@@ -1,15 +1,13 @@
 # Medical_Imaging_Assistant
 
-A desktop application for inspecting medical imaging datasets, generating
-quality reports, and discussing selected slices with Qwen.
+A tool for inspecting medical imaging datasets before they are used to train AI models. It generates summary reports and analyzes selected slices with a vision-language model (VLM). This project uses the Qwen model via an Ollama server.
 
-Detailed documentation for NIfTI/DICOM analysis and command-line workflows is
-available in [docs/dataset_analysis.md](docs/dataset_analysis.md).
+Detailed documentation for NIfTI/DICOM analysis and command-line workflows is available in [docs/dataset_analysis.md](docs/dataset_analysis.md).
 
 ## Prerequisites
 
 - Python 3.10 or newer;
-- Tkinter for the desktop interface.
+- Tkinter for the interface.
 
 On Ubuntu, install Tkinter with:
 
@@ -32,7 +30,7 @@ On Windows:
 
 ```powershell
 py -m venv .venv
-.venv\Scripts\Activate.ps1
+.\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 python -m pip install -r requirements/interface.txt
 ```
@@ -58,10 +56,18 @@ The `.env` file is ignored by Git. Never publish a real API key.
 
 ## Launching the interface
 
-Activate the virtual environment, move to the project root, and run:
+From the project root, run the command for your operating system.
+
+On Linux:
 
 ```bash
-python -m src.interface
+./.venv/bin/python -m src.interface
+```
+
+On Windows (PowerShell):
+
+```powershell
+.\.venv\Scripts\python.exe -m src.interface
 ```
 
 In the interface:
@@ -69,8 +75,13 @@ In the interface:
 1. choose the split to analyze (`train`, `test`, `validation`, or `all`);
 2. click **Select and analyze folder** and select the dataset directory;
 3. open the generated report with **Open generated report**;
-4. use the exploration workspace to display NIfTI slices and, when Qwen is
-   configured, discuss them with the model.
+4. use the exploration workspace to display NIfTI slices and discuss them with the model.
+
+In the slice gallery:
+
+- right-click a slice and choose **View larger** to visualize it or choose **Send to chat** to open a Qwen conversation with that slice attached;
+- left-click one or more slices (or use **Select all slices**), then click **Chat with Qwen** in the workspace sidebar. The selected slices are
+  automatically attached to the chat and sent to the model with your next message.
 
 Interface reports are written to:
 
