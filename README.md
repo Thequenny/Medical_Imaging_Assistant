@@ -1,6 +1,6 @@
 # Medical_Imaging_Assistant
 
-A tool for inspecting medical imaging datasets before they are used to train AI models. It generates summary reports and analyzes selected slices with a vision-language model (VLM). This project uses the Qwen model via an Ollama server.
+A tool for inspecting medical imaging datasets before they are used to train AI models. It generates summary reports and analyzes selected slices with a vision language model (VLM). This project uses the Qwen model via an Ollama server.
 
 Detailed documentation for NIfTI/DICOM analysis and command-line workflows is available in [docs/dataset_analysis.md](docs/dataset_analysis.md).
 
