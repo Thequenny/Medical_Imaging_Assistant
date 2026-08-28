@@ -1582,25 +1582,35 @@ def show_report():
         min_height=650,
     )
 
+    # Keep the workspace navigation in proportion with the report window.  A
+    # fixed width made the labels clip on scaled displays and took too much
+    # room away from the report when the window was made narrower.
     left_frame = make_card(report_window, width=245)
     left_frame.pack(side="left", fill="y", padx=(16, 8), pady=16)
     left_frame.pack_propagate(False)
 
+    wrapped_sidebar_widgets = []
+
     sidebar_header = tk.Frame(left_frame, background=APP_COLORS["surface"])
     sidebar_header.pack(fill="x", padx=18, pady=(20, 22))
-    tk.Label(
+    workspace_label = tk.Label(
         sidebar_header,
         text="Workspace",
         background=APP_COLORS["surface"],
         foreground=APP_COLORS["text"],
         font=("TkDefaultFont", 16, "bold"),
-    ).pack(anchor="w")
-    tk.Label(
+        justify="left",
+    )
+    workspace_label.pack(anchor="w")
+    workspace_subtitle = tk.Label(
         sidebar_header,
         text="Report and slice tools",
         background=APP_COLORS["surface"],
         foreground=APP_COLORS["muted"],
-    ).pack(anchor="w", pady=(3, 0))
+        justify="left",
+    )
+    workspace_subtitle.pack(anchor="w", pady=(3, 0))
+    wrapped_sidebar_widgets.extend((workspace_label, workspace_subtitle))
 
     right_frame = tk.Frame(
         report_window,
@@ -1635,13 +1645,16 @@ def show_report():
         foreground=APP_COLORS["muted"],
         font=("TkDefaultFont", 9, "bold"),
     ).pack(anchor="w", padx=4, pady=(0, 7))
-    make_button(
+    analysis_report_button = make_button(
         dataset_analysis_frame,
         "Analysis report",
         lambda: notebook.select(report_tab),
         variant="secondary",
         anchor="w",
-    ).pack(fill="x")
+        justify="left",
+    )
+    analysis_report_button.pack(fill="x")
+    wrapped_sidebar_widgets.append(analysis_report_button)
 
     qwen_analysis_frame = tk.Frame(
         left_frame,
@@ -1656,32 +1669,66 @@ def show_report():
         foreground=APP_COLORS["muted"],
         font=("TkDefaultFont", 9, "bold"),
     ).pack(anchor="w", padx=4, pady=(0, 7))
-    make_button(
+    browse_slices_button = make_button(
         qwen_analysis_frame,
         "Browse slices",
         lambda: open_slices_tab(notebook, report_tab),
         variant="secondary",
         anchor="w",
-    ).pack(fill="x", pady=(0, 8))
-    make_button(
+        justify="left",
+    )
+    browse_slices_button.pack(fill="x", pady=(0, 8))
+    chat_qwen_button = make_button(
         qwen_analysis_frame,
         "Chat with Qwen",
         open_chat_window,
         anchor="w",
-    ).pack(fill="x")
+        justify="left",
+    )
+    chat_qwen_button.pack(fill="x")
+    wrapped_sidebar_widgets.extend((browse_slices_button, chat_qwen_button))
 
     selected_folder = selected_dataset_folder()
     if selected_folder is not None:
-        tk.Label(
+        selected_folder_label = tk.Label(
             left_frame,
             text=selected_folder.name,
             background=APP_COLORS["surface_muted"],
             foreground=APP_COLORS["muted"],
-            wraplength=190,
             justify="left",
             padx=12,
             pady=9,
-        ).pack(side="bottom", fill="x", padx=14, pady=14)
+        )
+        selected_folder_label.pack(side="bottom", fill="x", padx=14, pady=14)
+        wrapped_sidebar_widgets.append(selected_folder_label)
+
+    def resize_workspace_sidebar(event=None):
+        if event is not None and event.widget is not report_window:
+            return
+
+        window_width = (
+            event.width if event is not None else report_window.winfo_width()
+        )
+        content_width = max(window_width - 48, 1)
+        preferred_width = round(content_width * 0.22)
+
+        # Preserve a useful report area on small screens while allowing the
+        # navigation to grow enough for larger fonts and long folder names.
+        maximum_for_report = max(180, content_width - 560)
+        sidebar_width = min(
+            max(preferred_width, 210),
+            340,
+            maximum_for_report,
+        )
+        sidebar_width = max(sidebar_width, 180)
+        left_frame.configure(width=sidebar_width)
+
+        wraplength = max(sidebar_width - 64, 100)
+        for widget in wrapped_sidebar_widgets:
+            widget.configure(wraplength=wraplength)
+
+    report_window.bind("<Configure>", resize_workspace_sidebar, add="+")
+    report_window.after_idle(resize_workspace_sidebar)
 
 
 def open_generated_report():
