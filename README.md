@@ -1,4 +1,4 @@
-# LLM_project
+# Medical_Imaging_Assistant
 
 A desktop application for inspecting medical imaging datasets, generating
 quality reports, and discussing selected slices with Qwen.
