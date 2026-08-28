@@ -7,7 +7,7 @@ import queue
 import re
 import subprocess
 import sys
-import threading
+import threading 
 try:
     from .test_accuracy_evaluation.slices_analyse import (
         chat_qwen,
