@@ -1,4 +1,4 @@
-# check_data
+# Check_MedicalImaging_data
 
 `check_data` is a Python tool for checking CT medical imaging datasets before
 AI training. It inspects NIfTI datasets, detects image/label relationships,
