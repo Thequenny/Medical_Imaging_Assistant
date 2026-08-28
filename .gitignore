@@ -182,6 +182,10 @@ data/nii/
 # Generated Word reports
 data/**/*.docx
 
+# Generated HTML/PDF reports
+data/**/*.html
+data/**/*.pdf
+
 # Local copy used by the desktop interface
 data/interface/nii/
 
