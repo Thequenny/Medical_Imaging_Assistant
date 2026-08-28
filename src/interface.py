@@ -9,13 +9,13 @@ import subprocess
 import sys
 import threading 
 try:
-    from .test_accuracy_evaluation.slices_analyse import (
+    from .vlm.slice_workflows import (
         chat_qwen,
         convert_to_png,
         generate_pdf,
     )
 except ImportError:
-    from test_accuracy_evaluation.slices_analyse import (
+    from vlm.slice_workflows import (
         chat_qwen,
         convert_to_png,
         generate_pdf,

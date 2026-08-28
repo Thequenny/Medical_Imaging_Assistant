@@ -1,9 +1,9 @@
 # Check_MedicalImaging_data
 
-`check_data` is a Python tool for checking CT medical imaging datasets before
-AI training. It inspects NIfTI datasets, detects image/label relationships,
-computes patient-level and dataset-level statistics, and generates a readable
-HTML report.
+`check_MedicalImaging_data` is a Python tool for checking CT medical imaging
+datasets before AI training. It inspects NIfTI datasets, detects image/label
+relationships, computes patient-level and dataset-level statistics, and
+generates a readable HTML report.
 
 The project was tested with Medical Segmentation Decathlon datasets, including
 `Task02_Heart` and `Task09_Spleen`.

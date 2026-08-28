@@ -33,7 +33,7 @@ except ImportError:
             "installed and causes a `frontend` import error, uninstall it with "
             "`python -m pip uninstall fitz`."
         ) from error
-from src.test_accuracy_evaluation.api_config import (
+from src.vlm.api_config import (
     QWEN_MODEL,
     create_qwen_client,
 )

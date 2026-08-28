@@ -5,7 +5,7 @@ import numpy as np
 from PIL import Image
 from reportlab.pdfgen import canvas
 
-from src.test_accuracy_evaluation.api_config import (
+from src.vlm.api_config import (
     QWEN_MODEL,
     create_qwen_client,
 )

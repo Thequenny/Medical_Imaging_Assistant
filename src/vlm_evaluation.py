@@ -7,22 +7,22 @@ from pathlib import Path
 from huggingface_hub import snapshot_download
 
 try:
-    from .api_config import QWEN_MODEL, create_qwen_client
+    from .vlm.api_config import QWEN_MODEL, create_qwen_client
 except ImportError:
-    from api_config import QWEN_MODEL, create_qwen_client
+    from vlm.api_config import QWEN_MODEL, create_qwen_client
 
 
 DEFAULT_PATIENTS_PER_SEQUENCE = 5
 RESPONSE_COUNT = 3
 SEQUENCES = ("T1", "T2")
 
-PROJECT_DIR = Path(__file__).resolve().parents[2]
-EVALUATION_DIR = Path(__file__).resolve().parent
-TRAIN_PATH = EVALUATION_DIR / "train.jsonl"
-REFERENCE_PATH = EVALUATION_DIR / "dice.jsonl"
+PROJECT_DIR = Path(__file__).resolve().parents[1]
+EVALUATION_DIR = PROJECT_DIR / "data" / "evaluation"
+CASES_PATH = EVALUATION_DIR / "evaluation_cases.jsonl"
+GROUND_TRUTH_PATH = EVALUATION_DIR / "ground_truth.jsonl"
 PREDICTION_PATHS = {
     response_number: (
-        EVALUATION_DIR / f"predictions_{response_number}.jsonl"
+        EVALUATION_DIR / f"predictions_run_{response_number:02d}.jsonl"
     )
     for response_number in range(1, RESPONSE_COUNT + 1)
 }
@@ -71,8 +71,8 @@ def load_balanced_case_groups(
             "Le nombre de patients par séquence doit être strictement positif."
         )
 
-    cases = load_jsonl(TRAIN_PATH)
-    references = load_jsonl(REFERENCE_PATH)
+    cases = load_jsonl(CASES_PATH)
+    references = load_jsonl(GROUND_TRUTH_PATH)
     if len(cases) != len(references):
         raise ValueError(
             "Le nombre d'examens et le nombre de références ne correspondent "
@@ -91,8 +91,9 @@ def load_balanced_case_groups(
         if reference_sequence != sequence:
             raise ValueError(
                 "Séquence incohérente pour le patient "
-                f"{case.get('patient_id')}: {sequence} dans {TRAIN_PATH}, "
-                f"mais {reference_sequence or 'vide'} dans {REFERENCE_PATH}."
+                f"{case.get('patient_id')}: {sequence} dans {CASES_PATH}, "
+                "mais "
+                f"{reference_sequence or 'vide'} dans {GROUND_TRUTH_PATH}."
             )
 
         patient_id = str(case.get("patient_id"))
@@ -251,9 +252,9 @@ def build_model_task(output_dir, number_of_slices):
 
 def generate_predictions(records, prediction_paths=PREDICTION_PATHS):
     try:
-        from .slices_analyse import convert_to_png
+        from .vlm.slice_workflows import convert_to_png
     except ImportError:
-        from slices_analyse import convert_to_png
+        from vlm.slice_workflows import convert_to_png
 
     prediction_paths = {
         response_number: Path(path)
